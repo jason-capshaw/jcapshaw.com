@@ -2,7 +2,9 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/content";
 
 export default function Home() {
-  const recentPosts = getAllPosts().slice(0, 5);
+  const allPosts = getAllPosts();
+  const featured = allPosts[0];
+  const recentPosts = allPosts.slice(1, 5);
 
   return (
     <>
@@ -18,32 +20,81 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="home-section">
-        <p className="home-section__label">Recent Writing</p>
-        <ul className="writing-list">
-          {recentPosts.map((post) => (
-            <li key={post.slug} className="writing-item">
-              <p className="writing-item__type">
-                {post.type === "essay" ? "Essay" : "Field Note"}
-              </p>
-              <h2 className="writing-item__title">
-                <Link href={`/writing/${post.slug}`}>{post.title}</Link>
-              </h2>
-              <p className="writing-item__excerpt">{post.excerpt}</p>
-              <p className="writing-item__date">{post.date}</p>
-            </li>
-          ))}
-        </ul>
-        {recentPosts.length > 0 && (
-          <p style={{ marginTop: "var(--spacing-lg)" }}>
-            <Link href="/writing">All writing &rarr;</Link>
+      {featured && (
+        <section className="home-featured">
+          <p className="home-featured__label mono">Latest</p>
+          <h2 className="home-featured__title">
+            <Link href={`/writing/${featured.slug}`}>{featured.title}</Link>
+          </h2>
+          <p className="home-featured__excerpt">{featured.excerpt}</p>
+          <p className="home-featured__meta">
+            {featured.type === "essay" ? "Essay" : "Field Note"} &middot;{" "}
+            {featured.date}
           </p>
-        )}
-        {recentPosts.length === 0 && (
-          <p style={{ color: "var(--color-text-secondary)" }}>
-            Writing coming soon.
-          </p>
-        )}
+        </section>
+      )}
+
+      {recentPosts.length > 0 && (
+        <section className="home-section">
+          <div className="home-section__header">
+            <p className="mono">Recent Writing</p>
+            <Link href="/writing" className="home-section__all">
+              View all &rarr;
+            </Link>
+          </div>
+          <ul className="writing-list">
+            {recentPosts.map((post) => (
+              <li key={post.slug} className="writing-item">
+                <div className="writing-item__body">
+                  <h3 className="writing-item__title">
+                    <Link href={`/writing/${post.slug}`}>{post.title}</Link>
+                  </h3>
+                  <p className="writing-item__excerpt">{post.excerpt}</p>
+                </div>
+                <div className="writing-item__aside">
+                  <p className="writing-item__type">
+                    {post.type === "essay" ? "Essay" : "Field Note"}
+                  </p>
+                  <p className="writing-item__date">{post.date}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="home-pillars">
+        <p className="mono">What I write about</p>
+        <div className="home-pillars__grid">
+          <div className="home-pillar">
+            <p className="home-pillar__title">Commerce Architecture</p>
+            <p className="home-pillar__desc">
+              Platform decisions, data models, and system design for B2B
+              complexity.
+            </p>
+          </div>
+          <div className="home-pillar">
+            <p className="home-pillar__title">Distribution &amp; Industrial</p>
+            <p className="home-pillar__desc">
+              The specific problems of moving physical products through complex
+              supply chains.
+            </p>
+          </div>
+          <div className="home-pillar">
+            <p className="home-pillar__title">Applied AI</p>
+            <p className="home-pillar__desc">
+              What happens when AI meets procurement workflows, product data,
+              and real-world constraints.
+            </p>
+          </div>
+          <div className="home-pillar">
+            <p className="home-pillar__title">Enterprise Systems</p>
+            <p className="home-pillar__desc">
+              ERPs, integrations, build-vs-buy, and the organizational friction
+              of digital transformation.
+            </p>
+          </div>
+        </div>
       </section>
     </>
   );

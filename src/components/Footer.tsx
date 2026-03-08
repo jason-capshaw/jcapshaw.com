@@ -1,7 +1,34 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <p>&copy; {new Date().getFullYear()} Jason Capshaw. All rights reserved.</p>
+      <div className="site-footer__inner">
+        <p className="site-footer__position">
+          Practitioner writing on B2B distribution, commerce architecture,
+          and technology that survives contact with reality.
+        </p>
+        <ul className="site-footer__connect">
+          <li>
+            <a href="mailto:jason@jcapshaw.com">Email</a>
+          </li>
+          <li>
+            <a
+              href="https://linkedin.com/in/jasoncapshaw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <Link href="/writing">Writing</Link>
+          </li>
+        </ul>
+      </div>
+      <p className="site-footer__copy">
+        &copy; {new Date().getFullYear()} Jason Capshaw
+      </p>
     </footer>
   );
 }

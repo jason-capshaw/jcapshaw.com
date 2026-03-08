@@ -11,14 +11,13 @@ export default function NowPage() {
       <div className="page-intro">
         <h1 className="page-intro__headline">Now</h1>
         <p className="page-intro__subhead">
-          What I&apos;m focused on right now.
-          Updated periodically.{" "}
+          What I&apos;m focused on right now.{" "}
           <a
             href="https://nownownow.com/about"
             target="_blank"
             rel="noopener noreferrer"
           >
-            What is a &quot;now&quot; page?
+            What is a now page?
           </a>
         </p>
       </div>
@@ -45,9 +44,7 @@ export default function NowPage() {
           handles 500,000 SKUs with inconsistent vendor data.
         </p>
 
-        <p style={{ color: "var(--color-text-tertiary)", fontSize: "0.85rem", marginTop: "var(--spacing-2xl)" }}>
-          Last updated: March 2026
-        </p>
+        <p className="now-updated">Last updated: March 2026</p>
       </div>
     </>
   );

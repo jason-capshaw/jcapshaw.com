@@ -12,9 +12,16 @@ export interface Post {
   type: PostType;
   published: boolean;
   content: string;
+  readingTime: string;
 }
 
 const contentDir = path.join(process.cwd(), "src/content");
+
+function estimateReadingTime(text: string): string {
+  const words = text.trim().split(/\s+/).length;
+  const minutes = Math.max(1, Math.round(words / 230));
+  return `${minutes} min read`;
+}
 
 function getPostsFromDir(dir: string, type: PostType): Post[] {
   const fullPath = path.join(contentDir, dir);
@@ -36,6 +43,7 @@ function getPostsFromDir(dir: string, type: PostType): Post[] {
         type,
         published: data.published !== false,
         content,
+        readingTime: estimateReadingTime(content),
       };
     });
 }

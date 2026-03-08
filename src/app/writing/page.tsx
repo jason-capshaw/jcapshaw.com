@@ -21,25 +21,27 @@ export default function WritingPage() {
         </p>
       </div>
 
-      <ul className="writing-list">
-        {posts.map((post) => (
-          <li key={post.slug} className="writing-item">
-            <p className="writing-item__type">
-              {post.type === "essay" ? "Essay" : "Field Note"}
-            </p>
-            <h2 className="writing-item__title">
-              <Link href={`/writing/${post.slug}`}>{post.title}</Link>
-            </h2>
-            <p className="writing-item__excerpt">{post.excerpt}</p>
-            <p className="writing-item__date">{post.date}</p>
-          </li>
-        ))}
-      </ul>
-
-      {posts.length === 0 && (
-        <p style={{ color: "var(--color-text-secondary)" }}>
-          Writing coming soon.
-        </p>
+      {posts.length > 0 ? (
+        <ul className="writing-list">
+          {posts.map((post) => (
+            <li key={post.slug} className="writing-item">
+              <div className="writing-item__body">
+                <h2 className="writing-item__title">
+                  <Link href={`/writing/${post.slug}`}>{post.title}</Link>
+                </h2>
+                <p className="writing-item__excerpt">{post.excerpt}</p>
+              </div>
+              <div className="writing-item__aside">
+                <p className="writing-item__type">
+                  {post.type === "essay" ? "Essay" : "Field Note"}
+                </p>
+                <p className="writing-item__date">{post.date}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="empty-state">Writing coming soon.</p>
       )}
     </>
   );
