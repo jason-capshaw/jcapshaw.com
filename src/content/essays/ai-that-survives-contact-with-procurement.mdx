@@ -1,0 +1,32 @@
+---
+title: "AI That Survives Contact With Procurement"
+excerpt: "The gap between AI demos and AI in production is especially wide in B2B. Here's what it takes to build AI features that work when a purchasing manager actually uses them."
+date: "2026-02-20"
+published: true
+---
+
+Every technology conference in 2025 and 2026 has featured AI demos that make enterprise procurement look easy. Natural language product search. Automated reordering. Intelligent quote generation. The demos are always impressive. The production deployments are almost always disappointing.
+
+The gap isn't about the technology. It's about the domain.
+
+## Why procurement is hard for AI
+
+Purchasing managers don't search the way consumers do. They search by part number, by spec, by cross-reference, by "the thing that goes on the Caterpillar 320 hydraulic line." They need exact matches when they have part numbers and fuzzy matches when they're describing a problem. Most AI search implementations are tuned for one mode or the other.
+
+They also need to trust the results. A consumer who gets a slightly wrong product recommendation loses a few minutes returning it. A purchasing manager who orders the wrong industrial component shuts down a job site. The cost of a false positive is orders of magnitude higher.
+
+## What works in practice
+
+The AI implementations that actually survive contact with B2B procurement share a few characteristics:
+
+**They augment, they don't replace.** The best implementations use AI to surface candidates and let the buyer confirm. Auto-complete that suggests part numbers. Search that shows "did you mean" alternatives when an exact match fails. Quote tools that pre-fill based on order history but require human approval.
+
+**They're trained on domain data.** Generic LLMs don't understand that "1/2 inch NPT" and "0.5 NPT male" might be the same fitting. Domain-specific training — or at minimum, retrieval-augmented generation against your actual catalog — is non-negotiable.
+
+**They degrade gracefully.** When the AI doesn't know, it says so. The worst implementations confidently return wrong results. The best ones say "I found 3 possible matches — which did you mean?" and fall back to traditional search when confidence is low.
+
+## The real bottleneck
+
+If your product data is inconsistent, your AI will be confidently wrong. If your catalog has three different entries for the same product with different descriptions, the model will treat them as three different products. Garbage in, confident garbage out.
+
+The unsexy truth: most companies would get more value from a six-month data quality initiative than from any AI feature. Fix the data first. Then let the AI amplify what's already clean.

@@ -1,66 +1,50 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { getAllPosts } from "@/lib/content";
 
 export default function Home() {
+  const recentPosts = getAllPosts().slice(0, 5);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <section className="home-hero">
+        <h1 className="home-hero__headline">
+          Making sense of architecture, AI, and digital execution in B2B
+          distribution — without the hand-wavy nonsense.
+        </h1>
+        <p className="home-hero__body">
+          I build and advise on commerce platforms, data infrastructure, and
+          enterprise systems for distributors navigating real digital
+          transformation. This is where I write about what actually works.
+        </p>
+      </section>
+
+      <section className="home-section">
+        <p className="home-section__label">Recent Writing</p>
+        <ul className="writing-list">
+          {recentPosts.map((post) => (
+            <li key={post.slug} className="writing-item">
+              <p className="writing-item__type">
+                {post.type === "essay" ? "Essay" : "Field Note"}
+              </p>
+              <h2 className="writing-item__title">
+                <Link href={`/writing/${post.slug}`}>{post.title}</Link>
+              </h2>
+              <p className="writing-item__excerpt">{post.excerpt}</p>
+              <p className="writing-item__date">{post.date}</p>
+            </li>
+          ))}
+        </ul>
+        {recentPosts.length > 0 && (
+          <p style={{ marginTop: "var(--spacing-lg)" }}>
+            <Link href="/writing">All writing &rarr;</Link>
           </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        )}
+        {recentPosts.length === 0 && (
+          <p style={{ color: "var(--color-text-secondary)" }}>
+            Writing coming soon.
+          </p>
+        )}
+      </section>
+    </>
   );
 }
