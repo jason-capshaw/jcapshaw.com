@@ -28,9 +28,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #0c0a09;
-    --color-text: #f5f5f4;
-    --color-text-secondary: #c8c3be;
-    --color-text-tertiary: #8f8983;
+    --color-text: #f7f7f6;
+    --color-text-secondary: #d4d0cc;
+    --color-text-tertiary: #9a9590;
     --color-accent: #f5f5f4;
     --color-border: #2e2a27;
     --color-border-strong: #44403c;
@@ -479,8 +479,8 @@ img { max-width: 100%; height: auto; }
 .article-back {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-text-tertiary);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
   text-decoration: none;
   letter-spacing: 0.02em;
   margin-bottom: var(--spacing-2xl);
@@ -523,14 +523,26 @@ img { max-width: 100%; height: auto; }
   gap: var(--spacing-lg);
 }
 
+.article-header__meta span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.article-header__meta span + span::before {
+  content: "·";
+  margin-right: var(--spacing-lg);
+  color: var(--color-text-tertiary);
+}
+
 /* Article body — the reading experience */
 .article-content {
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   line-height: 1.8;
+  max-width: 640px;
 }
 
 .article-content > p:first-child {
-  font-size: 1.2rem;
+  font-size: 1.22rem;
   line-height: 1.7;
   color: var(--color-text);
 }
@@ -540,15 +552,20 @@ img { max-width: 100%; height: auto; }
 }
 
 .article-content h2 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
+  font-weight: 700;
   margin-top: var(--spacing-3xl);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
   padding-top: var(--spacing-xl);
   border-top: 1px solid var(--color-border);
+  letter-spacing: -0.02em;
 }
 
 .article-content h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
   margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-md);
 }
 
 .article-content ul,
