@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   description:
     "Practitioner writing on B2B distribution, digital commerce architecture, enterprise systems, and AI that survives contact with reality.",
   metadataBase: new URL("https://jcapshaw.com"),
+  other: {
+    "theme-color": "#fafaf9",
+  },
 };
 
 export default function RootLayout({
@@ -32,8 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <a href="#main" className="skip-link">Skip to content</a>
         <Header />
-        <main className="page-container">{children}</main>
+        <main id="main" className="page-container">{children}</main>
         <Footer />
       </body>
     </html>

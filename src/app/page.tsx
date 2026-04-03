@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/content";
+import { getAllPosts, formatDate, formatDateShort } from "@/lib/content";
 
 export default function Home() {
   const allPosts = getAllPosts();
@@ -10,13 +10,12 @@ export default function Home() {
     <>
       <section className="home-hero">
         <h1 className="home-hero__headline">
-          Making sense of architecture, AI, and digital execution in B2B
-          distribution — without the hand-wavy nonsense.
+          I build commerce platforms for distributors — and write about what
+          actually works when enterprise software meets the real world.
         </h1>
         <p className="home-hero__body">
-          I build and advise on commerce platforms, data infrastructure, and
-          enterprise systems for distributors navigating real digital
-          transformation. This is where I write about what actually works.
+          Practitioner thinking on B2B architecture, product data, applied AI,
+          and the hard problems that don&apos;t fit on a vendor slide deck.
         </p>
       </section>
 
@@ -29,7 +28,7 @@ export default function Home() {
           <p className="home-featured__excerpt">{featured.excerpt}</p>
           <p className="home-featured__meta">
             {featured.type === "essay" ? "Essay" : "Field Note"} &middot;{" "}
-            {featured.date}
+            {formatDate(featured.date)}
           </p>
         </section>
       )}
@@ -55,7 +54,9 @@ export default function Home() {
                   <p className="writing-item__type">
                     {post.type === "essay" ? "Essay" : "Field Note"}
                   </p>
-                  <p className="writing-item__date">{post.date}</p>
+                  <p className="writing-item__date">
+                    {formatDateShort(post.date)}
+                  </p>
                 </div>
               </li>
             ))}
@@ -66,34 +67,34 @@ export default function Home() {
       <section className="home-pillars">
         <p className="mono">What I write about</p>
         <div className="home-pillars__grid">
-          <div className="home-pillar">
+          <Link href="/writing" className="home-pillar">
             <p className="home-pillar__title">Commerce Architecture</p>
             <p className="home-pillar__desc">
               Platform decisions, data models, and system design for B2B
               complexity.
             </p>
-          </div>
-          <div className="home-pillar">
+          </Link>
+          <Link href="/writing" className="home-pillar">
             <p className="home-pillar__title">Distribution &amp; Industrial</p>
             <p className="home-pillar__desc">
               The specific problems of moving physical products through complex
               supply chains.
             </p>
-          </div>
-          <div className="home-pillar">
+          </Link>
+          <Link href="/writing" className="home-pillar">
             <p className="home-pillar__title">Applied AI</p>
             <p className="home-pillar__desc">
               What happens when AI meets procurement workflows, product data,
               and real-world constraints.
             </p>
-          </div>
-          <div className="home-pillar">
+          </Link>
+          <Link href="/writing" className="home-pillar">
             <p className="home-pillar__title">Enterprise Systems</p>
             <p className="home-pillar__desc">
               ERPs, integrations, build-vs-buy, and the organizational friction
               of digital transformation.
             </p>
-          </div>
+          </Link>
         </div>
       </section>
     </>

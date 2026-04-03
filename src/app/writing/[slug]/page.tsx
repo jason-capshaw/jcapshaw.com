@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPostBySlug, getAllPosts } from "@/lib/content";
+import { getPostBySlug, getAllPosts, formatDate } from "@/lib/content";
 import { markdownToHtml } from "@/lib/markdown";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -46,7 +46,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </p>
         <h1 className="article-header__title">{post.title}</h1>
         <div className="article-header__meta">
-          <span>{post.date}</span>
+          <span>{formatDate(post.date)}</span>
           <span>{post.readingTime}</span>
         </div>
       </header>

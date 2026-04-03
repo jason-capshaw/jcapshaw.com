@@ -47,6 +47,7 @@ export default function Header() {
           className="site-header__toggle"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <svg
             width="20"

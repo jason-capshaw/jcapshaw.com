@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/content";
+import { getAllPosts, formatDateShort } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function WritingPage() {
                 <p className="writing-item__type">
                   {post.type === "essay" ? "Essay" : "Field Note"}
                 </p>
-                <p className="writing-item__date">{post.date}</p>
+                <p className="writing-item__date">{formatDateShort(post.date)}</p>
               </div>
             </li>
           ))}

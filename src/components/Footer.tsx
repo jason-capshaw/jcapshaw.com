@@ -22,7 +22,7 @@ export default function Footer() {
             </a>
           </li>
           <li>
-            <Link href="/writing">Writing</Link>
+            <Link href="/rss.xml">RSS</Link>
           </li>
         </ul>
       </div>

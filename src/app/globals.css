@@ -76,6 +76,11 @@ a:hover {
   text-decoration-color: var(--color-text);
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
 h1, h2, h3, h4 {
   font-weight: 600;
   line-height: 1.25;
@@ -129,6 +134,26 @@ hr {
 }
 
 img { max-width: 100%; height: auto; }
+
+/* ============================================
+   SKIP LINK — accessibility
+   ============================================ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 3px;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  top: var(--spacing-sm);
+}
 
 /* ============================================
    UTILITY: Mono label — the signature element
@@ -284,7 +309,7 @@ img { max-width: 100%; height: auto; }
    HOMEPAGE
    ============================================ */
 .home-hero {
-  padding: var(--spacing-2xl) 0 var(--spacing-4xl);
+  padding: var(--spacing-2xl) 0 var(--spacing-3xl);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -386,8 +411,17 @@ img { max-width: 100%; height: auto; }
 }
 
 .home-pillar {
+  display: block;
   padding-top: var(--spacing-md);
   border-top: 1px solid var(--color-border);
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.home-pillar:hover .home-pillar__title {
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-tertiary);
+  text-underline-offset: 3px;
 }
 
 .home-pillar__title {
