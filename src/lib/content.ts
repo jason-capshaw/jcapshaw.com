@@ -17,13 +17,18 @@ export interface Post {
 
 const contentDir = path.join(process.cwd(), "src/content");
 
+interface PostRecord {
+  post: Post;
+  sourcePath: string;
+}
+
 function estimateReadingTime(text: string): string {
   const words = text.trim().split(/\s+/).length;
   const minutes = Math.max(1, Math.round(words / 230));
   return `${minutes} min read`;
 }
 
-function getPostsFromDir(dir: string, type: PostType): Post[] {
+function getPostsFromDir(dir: string, type: PostType): PostRecord[] {
   const fullPath = path.join(contentDir, dir);
   if (!fs.existsSync(fullPath)) return [];
 
@@ -36,16 +41,56 @@ function getPostsFromDir(dir: string, type: PostType): Post[] {
       const { data, content } = matter(fileContents);
 
       return {
-        slug: filename.replace(/\.mdx$/, ""),
-        title: data.title || "Untitled",
-        excerpt: data.excerpt || "",
-        date: data.date || "",
-        type,
-        published: data.published !== false,
-        content,
-        readingTime: estimateReadingTime(content),
+        sourcePath: path.join(dir, filename),
+        post: {
+          slug: filename.replace(/\.mdx$/, ""),
+          title: data.title || "Untitled",
+          excerpt: data.excerpt || "",
+          date: data.date || "",
+          type,
+          published: data.published !== false,
+          content,
+          readingTime: estimateReadingTime(content),
+        },
       };
     });
+}
+
+function getSortedPosts(posts: Post[]): Post[] {
+  return posts.sort((a, b) => {
+    const aTime = Date.parse(a.date);
+    const bTime = Date.parse(b.date);
+    const safeATime = Number.isNaN(aTime) ? 0 : aTime;
+    const safeBTime = Number.isNaN(bTime) ? 0 : bTime;
+
+    if (safeATime !== safeBTime) {
+      return safeBTime - safeATime;
+    }
+
+    return a.slug.localeCompare(b.slug);
+  });
+}
+
+function getAllPostRecords(): PostRecord[] {
+  const records = [
+    ...getPostsFromDir("essays", "essay"),
+    ...getPostsFromDir("field-notes", "field-note"),
+  ];
+  const slugSources = new Map<string, string>();
+
+  for (const record of records) {
+    const existingSource = slugSources.get(record.post.slug);
+
+    if (existingSource) {
+      throw new Error(
+        `Duplicate post slug "${record.post.slug}" found in "${existingSource}" and "${record.sourcePath}".`,
+      );
+    }
+
+    slugSources.set(record.post.slug, record.sourcePath);
+  }
+
+  return records;
 }
 
 export function formatDate(dateStr: string): string {
@@ -68,18 +113,10 @@ export function formatDateShort(dateStr: string): string {
 }
 
 export function getAllPosts(): Post[] {
-  const essays = getPostsFromDir("essays", "essay");
-  const fieldNotes = getPostsFromDir("field-notes", "field-note");
-
-  return [...essays, ...fieldNotes]
-    .filter((p) => p.published)
-    .sort((a, b) => (a.date > b.date ? -1 : 1));
+  const posts = getAllPostRecords().map((record) => record.post);
+  return getSortedPosts(posts.filter((post) => post.published));
 }
 
 export function getPostBySlug(slug: string): Post | undefined {
-  const allPosts = [
-    ...getPostsFromDir("essays", "essay"),
-    ...getPostsFromDir("field-notes", "field-note"),
-  ];
-  return allPosts.find((p) => p.slug === slug);
+  return getAllPosts().find((post) => post.slug === slug);
 }

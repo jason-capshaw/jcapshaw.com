@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,12 +17,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jason Capshaw",
-    template: "%s — Jason Capshaw",
+    default: siteConfig.name,
+    template: `%s — ${siteConfig.name}`,
   },
-  description:
-    "Practitioner writing on B2B distribution, digital commerce architecture, enterprise systems, and AI that survives contact with reality.",
-  metadataBase: new URL("https://jcapshaw.com"),
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": `${siteConfig.url}/rss.xml`,
+    },
+  },
   other: {
     "theme-color": "#fafaf9",
   },

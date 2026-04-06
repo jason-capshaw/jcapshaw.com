@@ -30,11 +30,7 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  style={
-                    pathname.startsWith(link.href)
-                      ? { color: "var(--color-text)" }
-                      : undefined
-                  }
+                  aria-current={pathname.startsWith(link.href) ? "page" : undefined}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -22,7 +20,7 @@ export default function Footer() {
             </a>
           </li>
           <li>
-            <Link href="/rss.xml">RSS</Link>
+            <a href="/rss.xml" type="application/rss+xml">RSS</a>
           </li>
         </ul>
       </div>

@@ -5,7 +5,7 @@ Personal publishing platform for Jason Capshaw — practitioner writing on B2B d
 ## Architecture
 
 - **Framework:** Next.js 16 with App Router
-- **Content:** MDX files with gray-matter frontmatter, rendered via remark
+- **Content:** Markdown-first `.mdx` files with gray-matter frontmatter, rendered via `remark` on the server (no JSX/MDX runtime)
 - **Styling:** Vanilla CSS with CSS custom properties (no Tailwind, no CSS modules)
 - **Design:** Minimal, typographic, fast. Geist font family.
 - **Deployment:** Static generation (SSG) for all content
@@ -16,6 +16,7 @@ Personal publishing platform for Jason Capshaw — practitioner writing on B2B d
 src/
   app/
     page.tsx              # Homepage — hero + recent writing
+    rss.xml/route.ts      # RSS feed
     writing/
       page.tsx            # Writing index — all essays + field notes
       [slug]/page.tsx     # Individual article pages
@@ -28,6 +29,7 @@ src/
   lib/
     content.ts            # MDX file reading + frontmatter parsing
     markdown.ts           # Markdown to HTML conversion
+    site.ts               # Canonical site metadata
   content/
     essays/               # Long-form essays (.mdx)
     field-notes/          # Shorter field notes (.mdx)
@@ -35,7 +37,7 @@ src/
 
 ## Content Format
 
-MDX files with frontmatter:
+Content files use frontmatter like:
 ```yaml
 ---
 title: "Article Title"
@@ -44,6 +46,10 @@ date: "YYYY-MM-DD"
 published: true
 ---
 ```
+
+Notes:
+- Slugs are derived from filenames and must be unique across both `essays/` and `field-notes/`
+- `published: false` excludes a post from both indexes and direct routes
 
 ## Content Pillars
 

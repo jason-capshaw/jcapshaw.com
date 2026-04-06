@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# jcapshaw.com
 
-## Getting Started
+Personal publishing platform for Jason Capshaw. The site is a static Next.js
+16 build for essays and field notes on B2B distribution, commerce
+architecture, enterprise systems, and applied AI.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 App Router
+- File-based content from `src/content`
+- Gray-matter frontmatter + `remark` HTML rendering
+- Vanilla CSS with shared design tokens in `src/app/globals.css`
+- RSS feed at `/rss.xml`
+
+## Local Development
+
+Install dependencies and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Available scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - local development
+- `npm run lint` - ESLint
+- `npm run build` - production build
 
-## Learn More
+## Content Model
 
-To learn more about Next.js, take a look at the following resources:
+Posts live in:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/content/essays`
+- `src/content/field-notes`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Each file uses frontmatter:
 
-## Deploy on Vercel
+```yaml
+---
+title: "Article Title"
+excerpt: "Short description for listing pages"
+date: "YYYY-MM-DD"
+published: true
+---
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Notes:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Slugs come from filenames and must be unique across both content folders.
+- `.mdx` is used as the source extension, but content is rendered as markdown-only through `remark`.
+- `published: false` excludes a post from list pages, RSS, and direct routes.
+
+## Deployment
+
+The site is designed for static generation. `npm run build` produces a fully
+pre-rendered output, including article pages generated from the content
+filesystem and the RSS feed.
