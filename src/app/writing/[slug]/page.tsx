@@ -4,6 +4,7 @@ import { getPostBySlug, getAllPosts, formatDate } from "@/lib/content";
 import { mdxComponents } from "@/components/mdx";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -20,6 +21,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `${siteConfig.url}/writing/${post.slug}`,
+      publishedTime: `${post.date}T00:00:00Z`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 

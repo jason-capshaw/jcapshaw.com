@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Analytics from "@/components/Analytics";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -28,8 +29,22 @@ export const metadata: Metadata = {
       "application/rss+xml": `${siteConfig.url}/rss.xml`,
     },
   },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
   other: {
     "theme-color": "#fafaf9",
+    "color-scheme": "light dark",
   },
 };
 
@@ -45,6 +60,7 @@ export default function RootLayout({
         <Header />
         <main id="main" className="page-container">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
