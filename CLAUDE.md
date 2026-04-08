@@ -5,7 +5,7 @@ Personal publishing platform for Jason Capshaw — practitioner writing on B2B d
 ## Architecture
 
 - **Framework:** Next.js 16 with App Router
-- **Content:** Markdown-first `.mdx` files with gray-matter frontmatter, rendered via `remark` on the server (no JSX/MDX runtime)
+- **Content:** `.mdx` files with gray-matter frontmatter, rendered as real MDX with globally registered article components
 - **Styling:** Vanilla CSS with CSS custom properties (no Tailwind, no CSS modules)
 - **Design:** Minimal, typographic, fast. Geist font family.
 - **Deployment:** Static generation (SSG) for all content
@@ -26,9 +26,9 @@ src/
   components/
     Header.tsx            # Site navigation
     Footer.tsx            # Site footer
+    mdx/                  # Interactive MDX article components
   lib/
     content.ts            # MDX file reading + frontmatter parsing
-    markdown.ts           # Markdown to HTML conversion
     site.ts               # Canonical site metadata
   content/
     essays/               # Long-form essays (.mdx)
@@ -50,6 +50,8 @@ published: true
 Notes:
 - Slugs are derived from filenames and must be unique across both `essays/` and `field-notes/`
 - `published: false` excludes a post from both indexes and direct routes
+- MDX content can use the globally registered `Callout`, `Disclosure`, `Switcher`, and `Pane` components without imports
+- `import` and `export` statements inside article files are not supported
 
 ## Content Pillars
 

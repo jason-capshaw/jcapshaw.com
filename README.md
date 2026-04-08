@@ -8,7 +8,7 @@ architecture, enterprise systems, and applied AI.
 
 - Next.js 16 App Router
 - File-based content from `src/content`
-- Gray-matter frontmatter + `remark` HTML rendering
+- Gray-matter frontmatter + `next-mdx-remote` rendering for interactive MDX
 - Vanilla CSS with shared design tokens in `src/app/globals.css`
 - RSS feed at `/rss.xml`
 
@@ -50,8 +50,46 @@ published: true
 Notes:
 
 - Slugs come from filenames and must be unique across both content folders.
-- `.mdx` is used as the source extension, but content is rendered as markdown-only through `remark`.
+- Articles are real MDX and can use the globally registered components below.
+- `import` and `export` statements inside article files are not supported; use the registered components directly.
 - `published: false` excludes a post from list pages, RSS, and direct routes.
+
+### Interactive Article Components
+
+Articles can use these components directly without imports:
+
+- `Callout`
+- `Disclosure`
+- `Switcher`
+- `Pane`
+
+Example:
+
+```mdx
+---
+title: "Why ERP Boundaries Matter"
+excerpt: "An interactive note on where commerce logic should live."
+date: "2026-04-06"
+published: true
+---
+
+<Callout title="Core idea">
+The constraint is usually data ownership, not API availability.
+</Callout>
+
+<Disclosure title="Show the common failure mode">
+Teams assume the commerce platform should own logic that still depends on ERP-native rules.
+</Disclosure>
+
+<Switcher>
+  <Pane title="Vendor story">
+  A clean composable stack solves the problem.
+  </Pane>
+  <Pane title="Operating reality">
+  The integration boundary and pricing model usually decide the architecture first.
+  </Pane>
+</Switcher>
+```
 
 ## Deployment
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getAllPosts, formatDate } from "@/lib/content";
-import { markdownToHtml } from "@/lib/markdown";
+import { mdxComponents } from "@/components/mdx";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -27,8 +28,6 @@ export default async function ArticlePage({ params }: PageProps) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const htmlContent = await markdownToHtml(post.content);
-
   const allPosts = getAllPosts();
   const currentIndex = allPosts.findIndex((p) => p.slug === post.slug);
   const nextPost = currentIndex >= 0 && currentIndex < allPosts.length - 1
@@ -50,10 +49,9 @@ export default async function ArticlePage({ params }: PageProps) {
           <span>{post.readingTime}</span>
         </div>
       </header>
-      <div
-        className="article-content"
-        dangerouslySetInnerHTML={{ __html: htmlContent }}
-      />
+      <div className="article-content">
+        <MDXRemote source={post.content} components={mdxComponents} />
+      </div>
       {nextPost && (
         <footer className="article-footer">
           <p className="article-footer__label mono">Next</p>
