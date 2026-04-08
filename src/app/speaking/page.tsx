@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Speaking & Advisory",
   description:
-    "Speaking engagements and advisory work on B2B commerce, distribution technology, and digital transformation.",
+    "Speaking engagements and advisory work on B2B commerce, distribution technology, and enterprise systems.",
 };
 
 export default function SpeakingPage() {

@@ -64,34 +64,30 @@ export default function Home() {
       )}
 
       <section className="home-pillars">
-        <p className="mono">What I write about</p>
+        <p className="mono">Topics</p>
         <div className="home-pillars__grid">
           <Link href="/writing" className="home-pillar">
             <p className="home-pillar__title">Commerce Architecture</p>
             <p className="home-pillar__desc">
-              Platform decisions, data models, and system design for B2B
-              complexity.
+              Platform decisions, data models, and system design for B2B.
             </p>
           </Link>
           <Link href="/writing" className="home-pillar">
             <p className="home-pillar__title">Distribution &amp; Industrial</p>
             <p className="home-pillar__desc">
-              The specific problems of moving physical products through complex
-              supply chains.
+              How physical products move through complex supply chains.
             </p>
           </Link>
           <Link href="/writing" className="home-pillar">
             <p className="home-pillar__title">Applied AI</p>
             <p className="home-pillar__desc">
-              What happens when AI meets procurement workflows, product data,
-              and real-world constraints.
+              AI in procurement, product data, and operational workflows.
             </p>
           </Link>
           <Link href="/writing" className="home-pillar">
             <p className="home-pillar__title">Enterprise Systems</p>
             <p className="home-pillar__desc">
-              ERPs, integrations, build-vs-buy, and the organizational friction
-              of digital transformation.
+              ERPs, integrations, and the build-vs-buy decisions that shape organizations.
             </p>
           </Link>
         </div>

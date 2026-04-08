@@ -3,8 +3,8 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="site-footer__inner">
         <p className="site-footer__position">
-          Practitioner writing on B2B distribution, commerce architecture,
-          and technology that survives contact with reality.
+          Systems thinking for B2B distribution. Writing on commerce
+          architecture, enterprise systems, product data, and applied AI.
         </p>
         <ul className="site-footer__connect">
           <li>
