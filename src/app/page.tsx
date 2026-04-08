@@ -10,12 +10,11 @@ export default function Home() {
     <>
       <section className="home-hero">
         <h1 className="home-hero__headline">
-          I build commerce platforms for distributors — and write about what
-          actually works when enterprise software meets the real world.
+          Systems thinking for B2B distribution.
         </h1>
         <p className="home-hero__body">
-          Practitioner thinking on B2B architecture, product data, applied AI,
-          and the hard problems that don&apos;t fit on a vendor slide deck.
+          Writing on commerce architecture, enterprise systems, product data,
+          and applied AI.
         </p>
       </section>
 
