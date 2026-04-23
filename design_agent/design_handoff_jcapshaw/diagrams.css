@@ -1,0 +1,181 @@
+/* ============================================================
+   Inline diagrams — engineering-notebook schematics
+   ============================================================ */
+
+.diagram {
+  margin: calc(var(--rhythm) * 1.2) 0;
+  border: 1px solid var(--rule);
+  background:
+    linear-gradient(transparent 31px, var(--rule) 31px, var(--rule) 32px, transparent 32px) 0 0 / 100% 32px,
+    linear-gradient(90deg, transparent 31px, var(--rule) 31px, var(--rule) 32px, transparent 32px) 0 0 / 32px 100%,
+    color-mix(in oklab, var(--bg-elev) 40%, transparent);
+  position: relative;
+}
+.diagram-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  position: relative;
+  z-index: 1;
+}
+.diagram-head .d-title {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.diagram-head .d-fig {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.diagram-body {
+  padding: 28px 24px 32px;
+  position: relative;
+}
+.diagram-caption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  padding: 0 14px 14px;
+  border-top: 1px dashed var(--rule);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+/* SVG palette */
+.diagram svg .stroke { stroke: var(--rule-strong); fill: none; }
+.diagram svg .stroke-accent { stroke: var(--accent); fill: none; }
+.diagram svg .fill-bg { fill: var(--bg); }
+.diagram svg .fill-elev { fill: var(--bg-elev); }
+.diagram svg .fill-ink { fill: var(--ink); }
+.diagram svg .fill-dim { fill: var(--ink-dim); }
+.diagram svg .fill-faint { fill: var(--ink-faint); }
+.diagram svg .fill-accent { fill: var(--accent); }
+.diagram svg text {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  fill: var(--ink);
+}
+.diagram svg text.tiny {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--ink-faint);
+}
+.diagram svg text.serif {
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+  fill: var(--ink);
+}
+.diagram svg text.label-accent {
+  fill: var(--accent);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Matrix diagram */
+.diagram-matrix {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin: 10px 0 0;
+  position: relative;
+  z-index: 1;
+  background: color-mix(in oklab, var(--bg) 85%, transparent);
+}
+.diagram-matrix .cell {
+  padding: 14px 14px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  min-height: 72px;
+}
+.diagram-matrix .cell.head {
+  background: color-mix(in oklab, var(--bg-elev) 60%, transparent);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  min-height: auto;
+  padding: 10px 14px;
+}
+.diagram-matrix .cell .ax {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.diagram-matrix .cell .bd {
+  font-family: var(--serif);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.diagram-matrix .cell .sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-dim);
+  margin-top: 4px;
+}
+
+/* Legend */
+.d-legend {
+  display: flex;
+  gap: 18px;
+  padding: 10px 14px;
+  border-top: 1px dashed var(--rule);
+  flex-wrap: wrap;
+}
+.d-legend .li {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+.d-legend .li .dot {
+  width: 8px; height: 8px;
+  border: 1px solid var(--rule-strong);
+  background: var(--bg);
+}
+.d-legend .li .dot.accent { background: var(--accent); border-color: var(--accent); }
+.d-legend .li .dot.solid { background: var(--ink-dim); border-color: var(--ink-dim); }
+
+/* Little annotation callouts inside SVG */
+.diagram svg .tag-rect {
+  fill: var(--bg);
+  stroke: var(--rule-strong);
+}
+.diagram svg .anno-line {
+  stroke: var(--ink-faint);
+  stroke-dasharray: 2 2;
+  fill: none;
+}
+
+/* Responsive shrink */
+@media (max-width: 720px) {
+  .diagram-matrix { grid-template-columns: 1fr; }
+  .diagram-matrix .cell { border-right: 0; }
+  .diagram svg { max-width: 100%; height: auto; }
+}

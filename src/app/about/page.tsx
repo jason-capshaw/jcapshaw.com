@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -8,139 +9,117 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
-      <div className="page-intro">
-        <p className="page-intro__eyebrow mono">Background</p>
-        <h1 className="page-intro__headline">About</h1>
-        <p className="page-intro__subhead">
-          I build and write about the systems underneath modern B2B commerce:
-          platforms, product data, search, integration, and the decisions that
-          shape them.
-        </p>
-      </div>
-
-      <div className="page-stack">
-        <section className="page-section">
-          <p className="page-section__lead">
+    <div className="shell">
+      <section className="about-grid">
+        <div className="about-portrait" aria-hidden="true" />
+        <div className="about-body">
+          <span className="eyebrow">Background</span>
+          <h1>
+            I build and write about the systems underneath modern B2B commerce.
+          </h1>
+          <p>
             Most of my work lives in the unglamorous middle of enterprise
             change: the pricing logic, catalog quality, integration seams, and
             operating tradeoffs that determine whether a commerce program
             becomes a capability or a very expensive deck.
           </p>
-          <div className="page-section__body">
-            <p>
-              I have spent most of my career inside B2B distribution and
-              industrial commerce, where software has to accommodate negotiated
-              pricing, deep assortments, messy ERP data, and organizations that
-              cannot stop operating just because a transformation program says
-              they should.
-            </p>
-            <p>
-              That perspective shapes both the client work and the writing here.
-              I&apos;m interested in technology that survives operational
-              reality, not the simplified version that looks good in a vendor
-              environment.
-            </p>
-          </div>
-        </section>
+          <p>
+            I have spent most of my career inside B2B distribution and
+            industrial commerce, where software has to accommodate negotiated
+            pricing, deep assortments, messy ERP data, and organizations that
+            cannot stop operating just because a transformation program says
+            they should.
+          </p>
+          <p>
+            That perspective shapes both the client work and the writing here.
+            I&apos;m interested in technology that survives operational
+            reality, not the simplified version that looks good in a vendor
+            environment.
+          </p>
+        </div>
+      </section>
 
-        <section className="page-section">
-          <p className="page-section__label mono">Focus</p>
-          <div className="page-grid">
-            <article className="page-grid__item">
-              <h2 className="page-grid__title">Commerce architecture</h2>
-              <div className="page-grid__body">
-                <p>
-                  Platform selection, composability, search, and the system
-                  boundaries that make B2B complexity manageable.
-                </p>
-              </div>
-            </article>
-            <article className="page-grid__item">
-              <h2 className="page-grid__title">Product and pricing data</h2>
-              <div className="page-grid__body">
-                <p>
-                  The data discipline behind catalogs, customer-specific
-                  pricing, enrichment, and the workflows that keep them usable.
-                </p>
-              </div>
-            </article>
-            <article className="page-grid__item">
-              <h2 className="page-grid__title">Enterprise systems strategy</h2>
-              <div className="page-grid__body">
-                <p>
-                  ERP boundaries, integration patterns, build-vs-buy tradeoffs,
-                  and the organizational realities around long-lived systems.
-                </p>
-              </div>
-            </article>
-            <article className="page-grid__item">
-              <h2 className="page-grid__title">Applied AI</h2>
-              <div className="page-grid__body">
-                <p>
-                  Practical uses of AI for classification, search, and
-                  operational leverage when the data is messy and the stakes are
-                  real.
-                </p>
-              </div>
-            </article>
-          </div>
-        </section>
+      <section className="about-section">
+        <h2>Focus</h2>
+        <div className="body">
+          <p>
+            <strong>Commerce architecture.</strong> Platform selection,
+            composability, search, and the system boundaries that make B2B
+            complexity manageable.
+          </p>
+          <p>
+            <strong>Product &amp; pricing data.</strong> The data discipline
+            behind catalogs, customer-specific pricing, enrichment, and the
+            workflows that keep them usable.
+          </p>
+          <p>
+            <strong>Enterprise systems strategy.</strong> ERP boundaries,
+            integration patterns, build-vs-buy tradeoffs, and the
+            organizational realities around long-lived systems.
+          </p>
+          <p>
+            <strong>Applied AI.</strong> Practical uses of AI for
+            classification, search, and operational leverage when the data is
+            messy and the stakes are real.
+          </p>
+        </div>
+      </section>
 
-        <section className="page-section">
-          <p className="page-section__label mono">How I work</p>
-          <h2 className="page-section__title">
+      <section className="about-section">
+        <h2>How I work</h2>
+        <div className="body">
+          <p>
             I bias toward clarity, operating detail, and decisions that can
-            survive contact with the business.
-          </h2>
-          <div className="page-section__body">
-            <p>
-              The throughline is straightforward: make the problem legible, make
-              the tradeoffs explicit, and do not pretend B2C playbooks map
-              cleanly onto distribution. Good architecture is partly technical,
-              partly organizational, and mostly about reducing expensive
-              ambiguity.
-            </p>
-          </div>
+            survive contact with the business. The throughline is
+            straightforward: make the problem legible, make the tradeoffs
+            explicit, and do not pretend B2C playbooks map cleanly onto
+            distribution.
+          </p>
           <ul className="section-list">
             <li>
-              <strong>Architecture over theater:</strong> focus on durable
-              operating models, not launch-day optics.
+              <strong>Architecture over theater.</strong> Durable operating
+              models, not launch-day optics.
             </li>
             <li>
-              <strong>Data before decoration:</strong> better catalogs, pricing,
-              and search matter more than polished demos.
+              <strong>Data before decoration.</strong> Better catalogs,
+              pricing, and search matter more than polished demos.
             </li>
             <li>
-              <strong>Practical AI:</strong> use it where it lowers real
+              <strong>Practical AI.</strong> Use it where it lowers real
               friction, not where it adds novelty.
             </li>
           </ul>
-        </section>
+        </div>
+      </section>
 
-        <section className="page-section">
-          <p className="page-section__label mono">Contact</p>
-          <div className="page-section__body">
-            <p>
-              Email is the best path:{" "}
-              <a href="mailto:jason@jcapshaw.com">jason@jcapshaw.com</a>.
-              I&apos;m also on{" "}
-              <a
-                href="https://linkedin.com/in/jasoncapshaw"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-              .
-            </p>
-          </div>
-          <p className="page-note">
-            For speaking and advisory work, the{" "}
-            <a href="/speaking">speaking page</a> is the best summary of fit.
+      <section className="about-section">
+        <h2>Contact</h2>
+        <div className="body">
+          <p>
+            Email is the best path:{" "}
+            <a className="link" href="mailto:jason@jcapshaw.com">
+              jason@jcapshaw.com
+            </a>
+            . I&apos;m also on{" "}
+            <a
+              className="link"
+              href="https://linkedin.com/in/jasoncapshaw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+            .
           </p>
-        </section>
-      </div>
-    </>
+          <p>
+            For speaking and advisory work, the{" "}
+            <Link className="link" href="/speaking">
+              speaking page
+            </Link>{" "}
+            is the best summary of fit.
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -2,73 +2,76 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { openSearch } from "@/components/SearchOverlay";
+
+const links = [
+  { href: "/writing", label: "Writing" },
+  { href: "/projects", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/speaking", label: "Speaking" },
+  { href: "/now", label: "Now" },
+  { href: "/subscribe", label: "Subscribe" },
+];
 
 export default function Header() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const links = [
-    { href: "/writing", label: "Writing" },
-    { href: "/about", label: "About" },
-    { href: "/speaking", label: "Speaking" },
-    { href: "/now", label: "Now" },
-  ];
 
   return (
-    <>
-      <header className="site-header">
-        <Link href="/" className="site-header__identity">
-          <span className="site-header__name">Jason Capshaw</span>
-          <span className="site-header__tagline">
-            Systems / Commerce / Distribution
+    <header className="topbar">
+      <div className="topbar-inner">
+        <Link href="/" className="brand-wrap" aria-label="Home">
+          <span className="monogram" aria-hidden="true">jc</span>
+          <span className="brand">
+            <span className="name">Jason Capshaw</span>
+            <span className="sub">Systems · B2B Distribution</span>
           </span>
         </Link>
-        <nav>
-          <ul className={`site-header__nav${menuOpen ? " is-open" : ""}`}>
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  aria-current={pathname.startsWith(link.href) ? "page" : undefined}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+        <nav aria-label="Primary">
+          <ul className="nav">
+            {links.map((link) => {
+              const active =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
-        <button
-          className="site-header__toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
+        <div className="topbar-right">
+          <button
+            type="button"
+            className="icon-btn"
+            aria-label="Search (⌘K)"
+            title="Search (⌘K)"
+            onClick={openSearch}
           >
-            {menuOpen ? (
-              <>
-                <line x1="4" y1="4" x2="16" y2="16" />
-                <line x1="16" y1="4" x2="4" y2="16" />
-              </>
-            ) : (
-              <>
-                <line x1="3" y1="6" x2="17" y2="6" />
-                <line x1="3" y1="10" x2="17" y2="10" />
-                <line x1="3" y1="14" x2="17" y2="14" />
-              </>
-            )}
-          </svg>
-        </button>
-      </header>
-      <div className="site-header__rule" />
-    </>
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <circle cx="7" cy="7" r="4.5" />
+              <path d="M10.5 10.5 13.5 13.5" />
+            </svg>
+          </button>
+          <a
+            href="/rss.xml"
+            className="icon-btn"
+            aria-label="RSS feed"
+            title="RSS"
+          >
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3 3a10 10 0 0 1 10 10" />
+              <path d="M3 8a5 5 0 0 1 5 5" />
+              <circle cx="3.8" cy="12.2" r="1.1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
   );
 }

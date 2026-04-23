@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { getAllTalks } from "@/lib/talks";
+import { formatDateShort } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Speaking & Advisory",
@@ -7,108 +10,79 @@ export const metadata: Metadata = {
 };
 
 export default function SpeakingPage() {
+  const talks = getAllTalks();
+
   return (
-    <>
-      <div className="page-intro">
-        <p className="page-intro__eyebrow mono">Work Together</p>
-        <h1 className="page-intro__headline">Speaking &amp; Advisory</h1>
-        <p className="page-intro__subhead">
+    <div className="shell">
+      <section className="speaking-page">
+        <span className="eyebrow">Work together</span>
+        <h1>Speaking &amp; Advisory</h1>
+        <p className="lede">
           I speak and advise on digital commerce architecture, B2B distribution
           technology, and enterprise systems strategy. The value is practical
           judgment from building real systems, not recycled transformation
           language.
         </p>
-      </div>
+      </section>
 
-      <div className="page-stack">
-        <section className="page-section">
-          <p className="page-section__label mono">Offerings</p>
-          <div className="page-grid">
-            <article className="page-grid__item">
-              <h2 className="page-grid__title">Speaking</h2>
-              <div className="page-grid__body">
-                <p>
-                  Talks for leadership teams, customer events, associations, and
-                  internal groups that need a grounded point of view on B2B
-                  commerce, systems strategy, and digital execution.
-                </p>
-              </div>
-            </article>
-            <article className="page-grid__item">
-              <h2 className="page-grid__title">Advisory</h2>
-              <div className="page-grid__body">
-                <p>
-                  Short, focused advisory work for teams making platform,
-                  architecture, search, data, or AI decisions in distribution
-                  and industrial commerce.
-                </p>
-              </div>
-            </article>
-          </div>
-        </section>
+      <section>
+        {talks.map((t) => (
+          <Link
+            key={t.slug}
+            href={`/speaking/${t.slug}`}
+            className="talk-card"
+            data-preview-title={t.title}
+            data-preview-kind="Talk"
+          >
+            <span className="tc-date">{formatDateShort(t.date)}</span>
+            <div>
+              <p className="tc-title">{t.title}</p>
+              <p className="tc-venue">{t.venue}</p>
+              <p className="tc-abs">{t.abstract}</p>
+            </div>
+            <div className="tc-assets">
+              <span className={t.slides ? "avail" : ""}>
+                {t.slides ? "Slides" : "— slides"}
+              </span>
+              <span className={t.recording ? "avail" : ""}>
+                {t.recording ? "Recording" : "— recording"}
+              </span>
+              <span>{t.duration}</span>
+            </div>
+          </Link>
+        ))}
+      </section>
 
-        <section className="page-section">
-          <p className="page-section__label mono">Common topics</p>
-          <ul className="section-list">
-            <li>
-              <strong>B2B commerce architecture:</strong> choosing the right
-              level of platform complexity for catalog, pricing, and account
-              requirements.
-            </li>
-            <li>
-              <strong>Product data as infrastructure:</strong> why data quality,
-              enrichment, and governance determine digital outcomes.
-            </li>
-            <li>
-              <strong>Search and discovery:</strong> designing experiences for
-              industrial catalogs where language, taxonomy, and fitment are all
-              hard.
-            </li>
-            <li>
-              <strong>Applied AI in operations:</strong> where AI helps in
-              classification, content, search, and internal workflows without
-              becoming a side show.
-            </li>
-            <li>
-              <strong>Enterprise systems strategy:</strong> navigating ERP
-              boundaries, integration, and build-vs-buy decisions without
-              magical thinking.
-            </li>
-          </ul>
-        </section>
-
-        <section className="page-section">
-          <p className="page-section__label mono">Best fit</p>
-          <h2 className="page-section__title">
-            The strongest fit is an audience that wants operationally honest
-            insight, not generic digital optimism.
-          </h2>
-          <div className="page-section__body">
-            <p>
-              That usually means commerce leaders, product and technology teams,
-              distribution operators, and executive groups who need clearer
-              judgment on what to modernize, what to sequence, and what not to
-              overcomplicate.
-            </p>
-          </div>
-        </section>
-
-        <section className="page-section">
-          <p className="page-section__label mono">Contact</p>
-          <div className="page-section__body">
-            <p>
-              If you&apos;re exploring a talk, workshop, or advisory
-              engagement, reach out at{" "}
-              <a href="mailto:jason@jcapshaw.com">jason@jcapshaw.com</a> with a
-              few lines on the audience, context, and timing.
-            </p>
-          </div>
-          <p className="page-note">
-            I&apos;m most useful when the topic has real operational stakes and
-            the room wants specificity.
+      <section className="about-section">
+        <h2>Offerings</h2>
+        <div className="body">
+          <p>
+            <strong>Speaking.</strong> Talks for leadership teams, customer
+            events, associations, and internal groups that need a grounded
+            point of view on B2B commerce, systems strategy, and digital
+            execution.
           </p>
-        </section>
-      </div>
-    </>
+          <p>
+            <strong>Advisory.</strong> Short, focused advisory work for teams
+            making platform, architecture, search, data, or AI decisions in
+            distribution and industrial commerce.
+          </p>
+        </div>
+      </section>
+
+      <section className="about-section">
+        <h2>Contact</h2>
+        <div className="body">
+          <p>
+            If you&apos;re exploring a talk, workshop, or advisory engagement,
+            reach out at{" "}
+            <a className="link" href="mailto:jason@jcapshaw.com">
+              jason@jcapshaw.com
+            </a>{" "}
+            with a few lines on the audience, context, and timing.
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }

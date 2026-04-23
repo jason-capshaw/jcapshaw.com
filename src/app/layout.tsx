@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Spectral, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
+import SearchOverlay from "@/components/SearchOverlay";
+import TweaksPanel from "@/components/TweaksPanel";
+import HoverPreview from "@/components/HoverPreview";
+import TweaksBoot from "@/components/TweaksBoot";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spectral = Spectral({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,6 +36,8 @@ export const metadata: Metadata = {
     canonical: "/",
     types: {
       "application/rss+xml": `${siteConfig.url}/rss.xml`,
+      "application/atom+xml": `${siteConfig.url}/atom.xml`,
+      "application/feed+json": `${siteConfig.url}/feed.json`,
     },
   },
   openGraph: {
@@ -43,8 +54,8 @@ export const metadata: Metadata = {
     description: siteConfig.description,
   },
   other: {
-    "theme-color": "#fafaf9",
-    "color-scheme": "light dark",
+    "theme-color": "#0a0908",
+    "color-scheme": "dark light",
   },
 };
 
@@ -55,11 +66,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${spectral.variable} ${jetbrainsMono.variable}`}>
+        <TweaksBoot />
         <a href="#main" className="skip-link">Skip to content</a>
         <Header />
-        <main id="main" className="page-container">{children}</main>
+        <main id="main">{children}</main>
         <Footer />
+        <SearchOverlay />
+        <TweaksPanel />
+        <HoverPreview />
         <Analytics />
       </body>
     </html>

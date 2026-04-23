@@ -7,14 +7,14 @@ interface CalloutProps {
 }
 
 export default function Callout({
-  title,
+  title = "Note",
   tone = "default",
   children,
 }: CalloutProps) {
   return (
-    <aside className={`mdx-callout mdx-callout--${tone}`}>
-      {title ? <p className="mdx-callout__title">{title}</p> : null}
-      <div className="mdx-callout__body">{children}</div>
+    <aside className="callout" data-tone={tone}>
+      <p className="c-label">{title}</p>
+      <div className="c-body">{children}</div>
     </aside>
   );
 }
