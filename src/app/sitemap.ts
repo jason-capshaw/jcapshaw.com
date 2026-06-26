@@ -27,7 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteConfig.url}/about`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${siteConfig.url}/speaking`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteConfig.url}/now`, changeFrequency: "weekly", priority: 0.5 },
-    { url: `${siteConfig.url}/subscribe`, changeFrequency: "yearly", priority: 0.4 },
   ];
 
   return [...staticPages, ...postEntries, ...caseEntries];

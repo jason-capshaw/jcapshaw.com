@@ -2204,101 +2204,6 @@ html[data-typo="fraunces"] { --serif: "Fraunces", var(--font-serif), Georgia, se
   border-bottom: 1px solid var(--rule);
 }
 
-/* ---------- Subscribe ---------- */
-
-.subscribe {
-  padding: clamp(72px, 12vh, 140px) 0 48px;
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
-}
-.subscribe .eyebrow { display: block; margin-bottom: 14px; }
-.subscribe h1 {
-  font-size: clamp(32px, 4vw, 44px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  margin: 0 0 18px;
-}
-.subscribe .lede {
-  font-size: 15.5px;
-  line-height: 1.6;
-  color: var(--ink-dim);
-  max-width: 52ch;
-  margin: 0 auto 36px;
-}
-.sub-form {
-  display: flex;
-  gap: 8px;
-  max-width: 420px;
-  margin: 0 auto 48px;
-}
-.sub-form input {
-  flex: 1;
-  min-width: 0;
-  background: var(--bg-elev);
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  padding: 10px 12px;
-  font-family: var(--serif);
-  font-size: 14.5px;
-  color: var(--ink);
-  outline: 0;
-  transition: border-color 140ms ease;
-}
-.sub-form input:focus { border-color: var(--rule-strong); }
-.sub-form input::placeholder { color: var(--ink-faint); }
-.sub-form button {
-  background: transparent;
-  border: 1px solid var(--accent-soft);
-  border-radius: 2px;
-  padding: 10px 18px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  cursor: pointer;
-  transition: all 140ms ease;
-}
-.sub-form button:hover { background: var(--hl); color: var(--ink); }
-.feed-options {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  text-align: left;
-}
-.feed-options a {
-  background: var(--bg);
-  padding: 22px;
-  display: block;
-  transition: background 140ms ease;
-}
-.feed-options a:hover { background: var(--bg-elev); }
-.feed-options .f-kind {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 0 0 8px;
-}
-.feed-options .f-title {
-  font-family: var(--serif);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--ink);
-  margin: 0 0 4px;
-}
-.feed-options .f-desc {
-  font-family: var(--serif);
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--ink-dim);
-  margin: 0;
-}
-
 /* ---------- 404 ---------- */
 
 .notfound {
@@ -2371,8 +2276,7 @@ html[data-typo="fraunces"] { --serif: "Fraunces", var(--font-serif), Georgia, se
   .topic-grid,
   .post-nav,
   .related-grid,
-  .footer-inner,
-  .feed-options { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 28px; }
   .about-portrait { max-width: 220px; }
   .about-section,

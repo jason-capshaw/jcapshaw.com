@@ -11,12 +11,11 @@ export default function NotFound() {
         <p>
           The URL you followed doesn&apos;t match anything currently published.
           If this came from a link on the site, it&apos;s probably moved. Try
-          the archive or the subscribe page.
+          the archive or the front page.
         </p>
         <div className="nf-links">
           <Link href="/">Front page</Link>
           <Link href="/writing">Archive</Link>
-          <Link href="/subscribe">Subscribe</Link>
         </div>
         <NotFoundTrace />
       </section>

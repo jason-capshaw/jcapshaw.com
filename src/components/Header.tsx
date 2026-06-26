@@ -10,7 +10,6 @@ const links = [
   { href: "/about", label: "About" },
   { href: "/speaking", label: "Speaking" },
   { href: "/now", label: "Now" },
-  { href: "/subscribe", label: "Subscribe" },
 ];
 
 export default function Header() {

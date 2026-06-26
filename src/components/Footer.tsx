@@ -13,7 +13,6 @@ export default function Footer() {
               <li><Link href="/speaking">Speaking</Link></li>
               <li><Link href="/about">About</Link></li>
               <li><Link href="/now">Now</Link></li>
-              <li><Link href="/subscribe">Subscribe</Link></li>
             </ul>
           </div>
           <div>
