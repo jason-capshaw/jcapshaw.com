@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getAllPosts, formatDateShort } from "@/lib/content";
-import { getAllTalks } from "@/lib/talks";
 import HomeView from "@/components/HomeView";
 
 export default function Home() {
@@ -9,11 +8,6 @@ export default function Home() {
   const recentPosts = allPosts.slice(1, 5);
   const essayCount = allPosts.filter((p) => p.type === "essay").length;
   const fieldNoteCount = allPosts.filter((p) => p.type === "field-note").length;
-  const talks = getAllTalks().map((t) => ({
-    slug: t.slug,
-    title: t.title,
-    date: t.date,
-  }));
 
   const homePosts = allPosts.map((p) => ({
     slug: p.slug,
@@ -40,7 +34,6 @@ export default function Home() {
         featured={homeFeatured}
         recentPosts={homePosts.slice(1, 5)}
         allPostCount={allPosts.length}
-        talks={talks}
         essayCount={essayCount}
         fieldNoteCount={fieldNoteCount}
       >
@@ -48,7 +41,7 @@ export default function Home() {
           <h1>Systems thinking for B2B distribution.</h1>
           <p className="sub">
             A working archive on digital commerce architecture, product data,
-            enterprise systems, and applied AI — written from inside the
+            enterprise systems, and applied AI, written from inside the
             operational middle of industrial distribution.
           </p>
           <div className="ornament" aria-hidden="true" />

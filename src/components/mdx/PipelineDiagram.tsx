@@ -132,7 +132,7 @@ export default function PipelineDiagram() {
             className="tiny"
             style={{ letterSpacing: "0.04em", fill: "var(--accent)" }}
           >
-            confidence: 0.00—1.00
+            confidence: 0.00 to 1.00
           </text>
         </g>
 
@@ -184,7 +184,7 @@ export default function PipelineDiagram() {
         <g transform="translate(20, 250)">
           <line x1="80" y1="0" x2="80" y2="-45" className="anno-line" />
           <text x="0" y="12" className="tiny" style={{ letterSpacing: "0.04em" }}>
-            no transforms here —
+            no transforms here;
           </text>
           <text x="0" y="24" className="tiny" style={{ letterSpacing: "0.04em" }}>
             ingest is the contract

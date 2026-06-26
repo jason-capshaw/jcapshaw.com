@@ -1,6 +1,5 @@
 import { getAllPosts } from "@/lib/content";
-import { getAllTalks } from "@/lib/talks";
-import { getAllCaseStudies, getAllProjects } from "@/lib/projects";
+import { getAllProjects } from "@/lib/projects";
 import type { SearchItem } from "@/components/SearchOverlay";
 
 export const dynamic = "force-static";
@@ -12,25 +11,13 @@ export function GET() {
     excerpt: p.excerpt,
     href: `/writing/${p.slug}`,
   }));
-  const talks = getAllTalks().map<SearchItem>((t) => ({
-    kind: "talk",
-    title: t.title,
-    excerpt: t.abstract,
-    href: `/speaking/${t.slug}`,
-  }));
-  const cases = getAllCaseStudies().map<SearchItem>((c) => ({
+  const cases = getAllProjects().map<SearchItem>((c) => ({
     kind: "case",
     title: c.title,
     excerpt: c.summary,
     href: `/projects/${c.slug}`,
   }));
-  const projects = getAllProjects().map<SearchItem>((p) => ({
-    kind: "project",
-    title: p.name,
-    excerpt: p.description,
-    href: `/projects`,
-  }));
-  const items: SearchItem[] = [...posts, ...talks, ...cases, ...projects];
+  const items: SearchItem[] = [...posts, ...cases];
   return new Response(JSON.stringify(items), {
     headers: {
       "Content-Type": "application/json; charset=utf-8",

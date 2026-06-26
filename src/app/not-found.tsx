@@ -10,7 +10,7 @@ export default function NotFound() {
         <h1>This page is not in the archive.</h1>
         <p>
           The URL you followed doesn&apos;t match anything currently published.
-          If this came from a link on the site, it&apos;s probably moved — try
+          If this came from a link on the site, it&apos;s probably moved. Try
           the archive or the subscribe page.
         </p>
         <div className="nf-links">

@@ -1,40 +1,54 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Jason Capshaw — background, operating principles, and areas of focus.",
+    "Jason Capshaw: background, operating principles, and areas of focus.",
 };
 
 export default function AboutPage() {
   return (
     <div className="shell">
       <section className="about-grid">
-        <div className="about-portrait" aria-hidden="true" />
+        <div className="about-portrait">
+          <Image
+            src="/portrait.jpg"
+            alt="Jason Capshaw"
+            width={400}
+            height={400}
+            priority
+          />
+        </div>
         <div className="about-body">
           <span className="eyebrow">Background</span>
           <h1>
             I build and write about the systems underneath modern B2B commerce.
           </h1>
           <p>
-            Most of my work lives in the unglamorous middle of enterprise
-            change: the pricing logic, catalog quality, integration seams, and
-            operating tradeoffs that determine whether a commerce program
-            becomes a capability or a very expensive deck.
+            Before commerce, I spent about a decade running an investigations
+            business in the private sector, doing computer forensics,
+            penetration testing, and live investigative work. I started
+            building things for clients in distribution and never really
+            left.
           </p>
           <p>
-            I have spent most of my career inside B2B distribution and
-            industrial commerce, where software has to accommodate negotiated
-            pricing, deep assortments, messy ERP data, and organizations that
-            cannot stop operating just because a transformation program says
-            they should.
+            B2C was a known problem with known tools and never held my
+            attention. B2B distribution and industrial commerce gave me the
+            opposite: messy contract pricing, deep assortments, ERPs older
+            than the internet, organizations that cannot stop operating just
+            because a transformation program says they should. Hard problems
+            at scale, where getting the foundation right is the whole job.
           </p>
           <p>
-            That perspective shapes both the client work and the writing here.
-            I&apos;m interested in technology that survives operational
-            reality, not the simplified version that looks good in a vendor
-            environment.
+            Most enterprises in this space are still trying to make
+            multi-million-dollar packaged software fit a business it was
+            never designed for. I think the move, for the parts of the
+            business that actually differentiate, is to stop buying and
+            start building. That position got stronger when agents arrived,
+            not weaker. The talent that builds and operates well is what
+            makes the next decade safe in production.
           </p>
         </div>
       </section>
@@ -48,19 +62,19 @@ export default function AboutPage() {
             complexity manageable.
           </p>
           <p>
-            <strong>Product &amp; pricing data.</strong> The data discipline
+            <strong>Product and pricing data.</strong> The data discipline
             behind catalogs, customer-specific pricing, enrichment, and the
             workflows that keep them usable.
           </p>
           <p>
             <strong>Enterprise systems strategy.</strong> ERP boundaries,
-            integration patterns, build-vs-buy tradeoffs, and the
-            organizational realities around long-lived systems.
+            integration patterns, build versus buy, and the organizational
+            realities around long-lived systems.
           </p>
           <p>
             <strong>Applied AI.</strong> Practical uses of AI for
-            classification, search, and operational leverage when the data is
-            messy and the stakes are real.
+            classification, search, agentic ordering, and operational
+            leverage when the data is messy and the stakes are real.
           </p>
         </div>
       </section>
@@ -69,11 +83,10 @@ export default function AboutPage() {
         <h2>How I work</h2>
         <div className="body">
           <p>
-            I bias toward clarity, operating detail, and decisions that can
-            survive contact with the business. The throughline is
-            straightforward: make the problem legible, make the tradeoffs
-            explicit, and do not pretend B2C playbooks map cleanly onto
-            distribution.
+            I bias toward clarity, operating detail, and decisions that
+            survive contact with the business. Make the problem legible,
+            make the tradeoffs explicit, do not pretend B2C playbooks map
+            onto distribution.
           </p>
           <ul className="section-list">
             <li>
@@ -85,8 +98,15 @@ export default function AboutPage() {
               pricing, and search matter more than polished demos.
             </li>
             <li>
-              <strong>Practical AI.</strong> Use it where it lowers real
-              friction, not where it adds novelty.
+              <strong>Build to suit where it differentiates.</strong>{" "}
+              Packaged software is fine for commodity. For the parts of the
+              business that actually differentiate, custom built to suit
+              beats fighting a platform that was never designed for
+              distribution.
+            </li>
+            <li>
+              <strong>Talent is the throughline.</strong> Strong people are
+              what makes the next decade of automation safe in production.
             </li>
           </ul>
         </div>

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export type SearchItem = {
-  kind: "essay" | "field-note" | "talk" | "case" | "project";
+  kind: "essay" | "field-note" | "case";
   title: string;
   excerpt: string;
   href: string;
@@ -117,12 +117,8 @@ export default function SearchOverlay() {
         return "Essay";
       case "field-note":
         return "Field note";
-      case "talk":
-        return "Talk";
       case "case":
         return "Case study";
-      case "project":
-        return "Project";
     }
   };
 

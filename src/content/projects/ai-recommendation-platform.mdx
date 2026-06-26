@@ -1,0 +1,43 @@
+---
+title: "Context-aware AI product recommendations"
+summary: "Recommendation systems for enterprise commerce that weighted context (weather, geography, seasonality, behavior) over popularity, so customers were guided toward problems they were actually solving."
+role: "Solution architect, applied-AI lead"
+disciplines:
+  - Applied AI
+  - Personalization
+  - Customer experience
+  - Enterprise commerce
+client: "Enterprise commerce retailer"
+stack:
+  - Coveo
+  - Klaviyo
+  - Behavioral data
+  - Weather and geography APIs
+outcomes:
+  - kind: qualitative
+    text: "Recommendation logic shifted from promo and popularity defaults to context-aware suggestions tied to what the customer was likely trying to do."
+  - kind: qualitative
+    text: "Merchandising and marketing teams aligned around helping customers solve problems instead of cranking generic suggestion volume."
+relatedSkills:
+  - Applied AI
+  - Personalization
+  - Customer experience
+  - Solution architecture
+status: shipped
+order: 3
+published: true
+---
+
+## Business challenge
+
+Most recommendation systems answer the wrong question. They optimize "what would this customer buy next" when the more useful question is "what is this customer trying to get done." For an enterprise retailer with seasonal, regional, and weather-driven purchase behavior, popularity ranking was leaving real signal on the floor. A customer pulling up a product in a storm needs a different suggestion than the same customer in clear weather a month later.
+
+## Approach
+
+Built on Coveo for relevance ranking and Klaviyo for behavioral lifecycle messaging, then layered context as a first-class input. Weather, geography, and seasonality were treated as features, not segmentation tags. Behavior was used to refine intent rather than to bucket the customer.
+
+The boundary between recommendation and marketing volume was explicit. Suggestions had to help the customer finish the job they came for. Generic upsells were demoted even when they would have lifted attach rate in an A/B test, because attach lift on the wrong product creates returns and erodes trust.
+
+## Impact
+
+Recommendation logic shifted from promo and popularity defaults to context-aware suggestions tied to likely customer intent. Merchandising and marketing teams aligned around helping customers solve problems instead of pushing generic suggestion volume. Hard conversion numbers vary by category and aren't shareable in aggregate.

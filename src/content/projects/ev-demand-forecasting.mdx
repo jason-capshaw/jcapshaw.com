@@ -1,0 +1,52 @@
+---
+title: "AI demand forecasting for EV charging infrastructure"
+summary: "A predictive platform that forecasted EV charging demand by combining public datasets, private telemetry, and computer-vision detection of existing infrastructure."
+role: "Solution architect, applied-AI lead"
+disciplines:
+  - Applied AI
+  - Computer vision
+  - Data engineering
+  - Predictive analytics
+period: "2024"
+client: "EV charging infrastructure operator"
+stack:
+  - Python
+  - XGBoost
+  - PyTorch
+  - GIS
+  - Google imagery APIs
+outcomes:
+  - kind: qualitative
+    text: "Site selection shifted from reactive prioritization driven by anecdote and partner referrals to a data-driven model with a defensible market map underneath it."
+  - kind: qualitative
+    text: "The detection layer surfaced private and semi-private charging locations that public registries don't cover, materially changing how target geographies were sized."
+relatedSkills:
+  - AI strategy
+  - Predictive analytics
+  - Computer vision
+  - Data engineering
+  - Solution architecture
+status: shipped
+order: 1
+published: true
+---
+
+## Business challenge
+
+Capital planning for charging-network expansion was constrained by a market map that was both incomplete and stale. Public datasets cover the well-known public sites; they miss private fleets, semi-private depots, and recently-deployed infrastructure that changes the competitive picture for any given corridor. Demand forecasts were built on top of that incomplete map, so site-selection decisions were absorbing data error and forecasting error compounded.
+
+## Approach
+
+The platform was built in two halves, intentionally separable.
+
+The forecasting half combined gradient-boosted models for tabular drivers (vehicle registrations, traffic counts, demographics, utility-level constraints) with neural networks for spatial-temporal patterns the boosted models couldn't capture cleanly. Public and private data were unified into a feature store that treated provenance as a first-class attribute, so any forecast could be traced back to the inputs that produced it.
+
+The detection half used CNN-based image classification on Google imagery to find charging infrastructure the public registries missed. Detections were reconciled with private operator data through a confidence-weighted merge, producing a single canonical map of the network as it actually existed, not as it appeared on file.
+
+Keeping the two halves decoupled mattered. Forecasting could run on whatever map was current; detection could improve the map without forecasting needing to retrain. That separation made each pipeline iterate at its own cadence and made root-cause attribution clean when a number looked wrong.
+
+## Impact
+
+Deployment planning moved from a reactive, referral-driven workflow to data-driven prioritization with an auditable basis for each ranking. The detection layer changed the operator's market map in several target geographies: locations that didn't show up in any public dataset were now visible, and the competitive picture shifted accordingly.
+
+Hard numbers around capital efficiency and downstream commercial impact aren't public.

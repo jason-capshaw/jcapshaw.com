@@ -1,0 +1,42 @@
+---
+title: "ERP modernization and integration architecture"
+summary: "Architected the integration strategy that connected legacy ERP platforms to modern enterprise systems, reducing operational friction and unifying cross-system workflows."
+role: "Enterprise architect, integration lead"
+disciplines:
+  - Enterprise architecture
+  - Systems integration
+  - Legacy modernization
+  - Digital transformation
+client: "Enterprise distributor"
+stack:
+  - iPaaS
+  - Integration architecture
+  - Process modeling
+outcomes:
+  - kind: qualitative
+    text: "Operational friction across order-to-cash and inventory-management workflows fell as systems began to share state instead of relying on overnight reconciliation."
+  - kind: qualitative
+    text: "Cost to serve dropped as duplicate work between ERP, commerce, and customer systems was removed."
+relatedSkills:
+  - Enterprise architecture
+  - Systems integration
+  - Legacy modernization
+  - Digital transformation
+status: shipped
+order: 9
+published: true
+---
+
+## Business challenge
+
+The ERP was twenty years older than the systems around it and was acting as a constraint on every modernization initiative the business wanted to run. Replacing it was not a near-term option. Working around it was producing duplicate work, brittle hand-offs, and reconciliation jobs that ran overnight and frequently failed.
+
+## Approach
+
+Built the integration strategy around an iPaaS layer that brokered between the ERP and the modern systems, rather than letting each new platform negotiate its own bilateral connection. Process modeling came first, so the integrations carried business semantics rather than just data shapes. Order-to-cash and inventory flows were mapped end-to-end before any pipe was drawn.
+
+The architecture assumed the ERP would eventually be modernized but did not block on it. Every integration was designed so the ERP endpoint could be swapped without redoing the downstream contracts.
+
+## Impact
+
+Operational friction across order-to-cash and inventory management fell as systems shared state instead of waiting on nightly batches. Cost to serve dropped because duplicate work between ERP, commerce, and customer-facing systems was removed. The integration layer also bought the business optionality: the ERP modernization conversation could now happen on its own merits, not as an emergency.

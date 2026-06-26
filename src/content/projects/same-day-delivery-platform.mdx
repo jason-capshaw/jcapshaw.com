@@ -1,0 +1,44 @@
+---
+title: "Same-day delivery platform architecture"
+summary: "Designed the architecture and integration strategy for an enterprise same-day delivery capability, including the RFP and the shared-services approach behind it."
+role: "Solution architect, RFP lead"
+disciplines:
+  - Solution architecture
+  - Enterprise integration
+  - Microservices
+  - Shared services
+client: "Enterprise distributor"
+stack:
+  - Microservices
+  - Enterprise integration platform
+  - Shared-services architecture
+outcomes:
+  - kind: qualitative
+    text: "Produced an architecture and integration strategy that supported same-day delivery across multiple downstream platforms instead of as a one-off bolt-on."
+  - kind: qualitative
+    text: "Vendor selection and architecture decisions were owned by the strategy and design work; development teams executed delivery against that blueprint."
+relatedSkills:
+  - Solution architecture
+  - Enterprise integration
+  - Vendor evaluation
+  - Strategic consulting
+status: shipped
+order: 8
+published: true
+---
+
+## Business challenge
+
+Same-day delivery had been treated as a single-channel feature: bolt a fulfillment integration onto one storefront and call it done. The result was brittle, duplicated when the next channel asked for the same thing, and impossible to operate across the enterprise as a coherent capability.
+
+## Approach
+
+Designed the architecture as a shared capability, not a feature attached to one platform. Microservices wrapped the fulfillment, routing, and tracking domains so any consuming channel could call the same interfaces. Enterprise integration sat between those services and the legacy systems that held inventory, orders, and customer data.
+
+Ran the vendor RFP against the same architecture, so selection criteria reflected what the platform actually needed rather than the most polished pitch deck. Implementation strategy staged rollout by channel risk, with the highest-volume consumer last.
+
+The architecture and integration strategy were owned by this work. Development teams executed delivery against that blueprint, which kept design intent intact through implementation.
+
+## Impact
+
+Same-day delivery became a capability the business could compose into multiple channels rather than rebuild for each one. The shared-services pattern reduced future integration cost on every channel that came online after the first.

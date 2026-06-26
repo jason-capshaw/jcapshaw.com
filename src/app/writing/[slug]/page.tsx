@@ -77,7 +77,7 @@ export default async function ArticlePage({ params }: PageProps) {
           </p>
           <h1>{post.title}</h1>
           {post.excerpt ? <p className="dek">{post.excerpt}</p> : null}
-          <p className="byline">— Jason Capshaw</p>
+          <p className="byline">By Jason Capshaw</p>
         </header>
 
         <div className="prose">

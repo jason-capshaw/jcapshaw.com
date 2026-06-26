@@ -9,7 +9,7 @@ export default function NowPage() {
   return (
     <div className="shell">
       <section className="now-head">
-        <p className="updated">Last updated · April 2026</p>
+        <p className="updated">Last updated · June 2026</p>
         <h1>Now</h1>
         <p className="lede">
           What I&apos;m focused on right now.{" "}
@@ -25,49 +25,52 @@ export default function NowPage() {
       </section>
 
       <section className="now-section">
-        <h3>At work</h3>
+        <h3>Working on</h3>
         <div className="body">
           <p>
-            Building the boring parts that determine whether digital commerce
-            actually works. Right now that means product data architecture,
-            search quality, and the integration edges between commerce
-            platforms and the systems that still run the business day to day.
+            Agentic commerce in B2B: purchasing and procurement workflows,
+            automated ordering, and the product services that sit
+            underneath. Most of the real work is the layer beneath the
+            agent. That is what decides whether autonomous ordering holds
+            up in a transaction the buyer is accountable for.
           </p>
         </div>
       </section>
 
       <section className="now-section">
-        <h3>In writing</h3>
+        <h3>Thinking about</h3>
         <div className="body">
           <p>
-            Working through essays on product data economics, enterprise AI
-            that has to survive procurement and governance, and the gap
-            between demo-friendly software stories and operational reality in
-            distribution.
+            Long-horizon commerce architecture. The next five years of
+            technology shifts are coming faster than most enterprise stacks
+            were designed to absorb. The question I keep returning to: how do
+            you position infrastructure and architecture so new capability
+            gets consumed rapidly, instead of needing a transformation
+            program to land it each time?
           </p>
         </div>
       </section>
 
       <section className="now-section">
-        <h3>Learning</h3>
-        <div className="body">
-          <p>
-            Spending time on how LLMs can support classification, search, and
-            internal knowledge work in large industrial catalogs where the
-            data is inconsistent, the vocabulary is domain-specific, and the
-            acceptable error rate is low.
-          </p>
-        </div>
-      </section>
-
-      <section className="now-section">
-        <h3>Paying attention</h3>
+        <h3>Following</h3>
         <div className="body">
           <ul>
-            <li>Search relevance and synonym strategy in industrial catalogs</li>
-            <li>How teams govern AI outputs inside quote-to-cash workflows</li>
-            <li>The cost structure behind enrichment, taxonomy, and cleanup work</li>
+            <li>Architecture and team dynamics in the era of autonomous agents</li>
+            <li>Risk and governance around agents operating inside real workflows</li>
+            <li>Strategic talent management as the shape of the work changes</li>
+            <li>Security and privacy posture for agents touching production systems</li>
           </ul>
+        </div>
+      </section>
+
+      <section className="now-section">
+        <h3>Outside work</h3>
+        <div className="body">
+          <p>Cycling.</p>
+          <p>
+            Building an aquaponics system that uses modern sensors and
+            machine learning to optimize and improve output.
+          </p>
         </div>
       </section>
     </div>

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Subscribe",
   description:
-    "Subscribe to essays and field notes — by email or feed reader.",
+    "Subscribe to essays and field notes by email or feed reader.",
 };
 
 export default function SubscribePage() {
@@ -14,7 +14,7 @@ export default function SubscribePage() {
         <h1>Get the writing as it ships.</h1>
         <p className="lede">
           New essays and field notes land a few times a month. No digest, no
-          tracking, no marketing — just the work, delivered quietly.
+          tracking, no marketing, just the work, delivered quietly.
         </p>
         <form
           className="sub-form"
@@ -36,8 +36,8 @@ export default function SubscribePage() {
             <p className="f-kind">RSS</p>
             <p className="f-title">RSS 2.0</p>
             <p className="f-desc">
-              Standard RSS feed for most readers — NetNewsWire, Reeder,
-              Feedbin.
+              Standard RSS feed for most readers (NetNewsWire, Reeder,
+              Feedbin).
             </p>
           </a>
           <a href="/atom.xml">

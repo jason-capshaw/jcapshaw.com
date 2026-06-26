@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/projects";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { getAllProjects, getProjectBySlug } from "@/lib/projects";
+import { mdxComponents } from "@/components/mdx";
 import { siteConfig } from "@/lib/site";
 
 interface PageProps {
@@ -9,29 +11,34 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return getAllCaseStudies().map((c) => ({ slug: c.slug }));
+  return getAllProjects().map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const c = getCaseStudyBySlug(slug);
-  if (!c) return {};
+  const p = getProjectBySlug(slug);
+  if (!p) return {};
   return {
-    title: c.title,
-    description: c.summary,
+    title: p.title,
+    description: p.summary,
     openGraph: {
       type: "article",
-      title: c.title,
-      description: c.summary,
-      url: `${siteConfig.url}/projects/${c.slug}`,
+      title: p.title,
+      description: p.summary,
+      url: `${siteConfig.url}/projects/${p.slug}`,
     },
   };
 }
 
 export default async function CasePage({ params }: PageProps) {
   const { slug } = await params;
-  const c = getCaseStudyBySlug(slug);
-  if (!c) notFound();
+  const p = getProjectBySlug(slug);
+  if (!p) notFound();
+
+  const metricOutcomes = p.outcomes.filter((o) => o.kind === "metric");
+  const qualitativeOutcomes = p.outcomes.filter((o) => o.kind === "qualitative");
+
+  const headMeta = [p.client, p.period].filter(Boolean).join(" · ");
 
   return (
     <div className="shell">
@@ -40,14 +47,14 @@ export default async function CasePage({ params }: PageProps) {
       </Link>
 
       <header className="case-head">
-        <p className="c-client">{c.client} · {c.meta}</p>
-        <h1>{c.title}</h1>
-        <p className="summary">{c.summary}</p>
+        {headMeta ? <p className="c-client">{headMeta}</p> : null}
+        <h1>{p.title}</h1>
+        {p.summary ? <p className="summary">{p.summary}</p> : null}
       </header>
 
-      {c.outcomes.length > 0 ? (
+      {metricOutcomes.length > 0 ? (
         <section className="case-outcomes" aria-label="Outcomes">
-          {c.outcomes.map((o) => (
+          {metricOutcomes.map((o) => (
             <div key={o.label} className="o-cell">
               <p className="o-metric">{o.metric}</p>
               <p className="o-label">{o.label}</p>
@@ -56,48 +63,67 @@ export default async function CasePage({ params }: PageProps) {
         </section>
       ) : null}
 
-      <section className="case-section">
-        <h2>Period</h2>
-        <div className="body">
-          <p>{c.period}</p>
-        </div>
-      </section>
-
-      <section className="case-section">
-        <h2>Stack</h2>
-        <div className="body">
-          <p className="stack">{c.stack.join(" · ")}</p>
-        </div>
-      </section>
-
-      <section className="case-section">
-        <h2>Problem</h2>
-        <div className="body">
-          {c.problem.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </div>
-      </section>
-
-      <section className="case-section">
-        <h2>Approach</h2>
-        <div className="body">
-          {c.approach.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </div>
-      </section>
-
-      {c.reflection.length > 0 ? (
-        <section className="case-section">
-          <h2>Hindsight</h2>
-          <div className="body">
-            {c.reflection.map((p, i) => (
-              <p key={i}>{p}</p>
+      {qualitativeOutcomes.length > 0 ? (
+        <section className="case-outcomes-q" aria-label="Qualitative outcomes">
+          <p className="o-q-head">Impact</p>
+          <ul>
+            {qualitativeOutcomes.map((o, i) => (
+              <li key={i}>{o.text}</li>
             ))}
-          </div>
+          </ul>
         </section>
       ) : null}
+
+      <div className="prose case-prose">
+        <MDXRemote source={p.content} components={mdxComponents} />
+      </div>
+
+      <section className="case-meta" aria-label="Engagement detail">
+        <dl>
+          {p.role ? (
+            <div className="cm-row">
+              <dt>Role</dt>
+              <dd>{p.role}</dd>
+            </div>
+          ) : null}
+          {p.disciplines.length > 0 ? (
+            <div className="cm-row">
+              <dt>Disciplines</dt>
+              <dd className="cm-chips">
+                {p.disciplines.map((d) => (
+                  <span key={d} className="cm-chip">
+                    {d}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          ) : null}
+          {p.stack.length > 0 ? (
+            <div className="cm-row">
+              <dt>Stack</dt>
+              <dd className="cm-chips">
+                {p.stack.map((s) => (
+                  <span key={s} className="cm-chip">
+                    {s}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          ) : null}
+          {p.relatedSkills.length > 0 ? (
+            <div className="cm-row">
+              <dt>Related skills</dt>
+              <dd className="cm-chips">
+                {p.relatedSkills.map((s) => (
+                  <span key={s} className="cm-chip">
+                    {s}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          ) : null}
+        </dl>
+      </section>
     </div>
   );
 }

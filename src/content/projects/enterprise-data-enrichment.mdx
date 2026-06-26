@@ -1,0 +1,43 @@
+---
+title: "Automated enterprise data enrichment"
+summary: "Replaced a multi-year manual enrichment program with an automated pipeline that closed the work in under ninety days."
+role: "Solution architect, automation lead"
+disciplines:
+  - Data engineering
+  - Automation
+  - Operational efficiency
+  - Enterprise integration
+client: "Enterprise distributor"
+stack:
+  - APIs
+  - Web scraping
+  - Data pipelines
+  - External data sources
+outcomes:
+  - kind: metric
+    metric: "<90 days"
+    label: "Enrichment program completion"
+  - kind: qualitative
+    text: "Closed a backlog that prior manual efforts had not been able to finish over multiple years, leaving a reusable pipeline behind for future enrichment runs."
+relatedSkills:
+  - Automation
+  - Data engineering
+  - Operational efficiency
+status: shipped
+order: 6
+published: true
+---
+
+## Business challenge
+
+The enrichment work had been on the roadmap for years. Multiple manual programs had been started, partially completed, and quietly shelved once the team realized the volume was too large to grind through. The data was still missing, and the downstream systems that needed it were still working around the gap.
+
+## Approach
+
+Treated the problem as automation, not headcount. Catalogued the external sources where the missing attributes actually lived, then built API integrations where contracts allowed and structured web scraping where they didn't. Records were ingested into a pipeline that scored confidence per attribute and per source, so reconciliation was traceable and overridable rather than opaque.
+
+The architecture assumed the pipeline would be reused. Enrichment is not a one-time event in distribution: the same shape of work recurs whenever the catalog grows or a new attribute starts to matter.
+
+## Impact
+
+The full enrichment program closed in under ninety days. A backlog that prior manual efforts had not been able to finish over multiple years was resolved, and the pipeline behind it stayed in place for future enrichment cycles.
