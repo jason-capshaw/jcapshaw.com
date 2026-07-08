@@ -86,10 +86,12 @@ export default function HomeView({
         <div className="dense-col">
           <h3>Topics</h3>
           <ul className="dense-list">
-            <li><Link className="dl-title" href="/writing">Commerce architecture</Link><span className="dl-meta">Platforms · Data</span></li>
-            <li><Link className="dl-title" href="/writing">Distribution &amp; industrial</Link><span className="dl-meta">Channels</span></li>
-            <li><Link className="dl-title" href="/writing">Applied AI</Link><span className="dl-meta">Classification</span></li>
-            <li><Link className="dl-title" href="/writing">Enterprise systems</Link><span className="dl-meta">ERP · Integration</span></li>
+            <li><Link className="dl-title" href="/writing/topics/commerce-architecture">Commerce architecture</Link><span className="dl-meta">Platforms · Data</span></li>
+            <li><Link className="dl-title" href="/writing/topics/b2b-distribution">B2B distribution</Link><span className="dl-meta">Channels</span></li>
+            <li><Link className="dl-title" href="/writing/topics/applied-ai">Applied AI</Link><span className="dl-meta">Classification</span></li>
+            <li><Link className="dl-title" href="/writing/topics/enterprise-systems">Enterprise systems</Link><span className="dl-meta">ERP · Integration</span></li>
+            <li><Link className="dl-title" href="/writing/topics/apis-integration">APIs &amp; integration</Link><span className="dl-meta">Strategy · Governance</span></li>
+            <li><Link className="dl-title" href="/writing/topics/product-data">Product &amp; pricing data</Link><span className="dl-meta">Catalogs · Pricing</span></li>
           </ul>
         </div>
       </section>

@@ -7,8 +7,9 @@ import { openSearch } from "@/components/SearchOverlay";
 const links = [
   { href: "/writing", label: "Writing" },
   { href: "/projects", label: "Work" },
-  { href: "/about", label: "About" },
+  { href: "/advisory", label: "Advisory" },
   { href: "/speaking", label: "Speaking" },
+  { href: "/about", label: "About" },
   { href: "/now", label: "Now" },
 ];
 

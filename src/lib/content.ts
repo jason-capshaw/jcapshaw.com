@@ -4,12 +4,61 @@ import matter from "gray-matter";
 
 export type PostType = "essay" | "field-note";
 
+export interface Topic {
+  slug: string;
+  label: string;
+  description: string;
+}
+
+// Canonical topic taxonomy. Post frontmatter `tags:` entries must use these slugs.
+export const topics: Topic[] = [
+  {
+    slug: "commerce-architecture",
+    label: "Commerce architecture",
+    description:
+      "Platform decisions, composability, search, and the system boundaries that make B2B complexity manageable.",
+  },
+  {
+    slug: "b2b-distribution",
+    label: "B2B distribution",
+    description:
+      "How distributors actually operate: contract pricing, branch operations, quote workflows, and the channel realities behind industrial commerce.",
+  },
+  {
+    slug: "enterprise-systems",
+    label: "Enterprise systems",
+    description:
+      "ERP boundaries, integration patterns, build versus buy, and the organizational realities around long-lived systems.",
+  },
+  {
+    slug: "applied-ai",
+    label: "Applied AI",
+    description:
+      "Practical uses of AI for classification, search, agentic ordering, and operational leverage when the data is messy and the stakes are real.",
+  },
+  {
+    slug: "apis-integration",
+    label: "APIs & integration",
+    description:
+      "API strategy, governance, and the product thinking that makes integration programs usable rather than just connected.",
+  },
+  {
+    slug: "product-data",
+    label: "Product & pricing data",
+    description:
+      "The data discipline behind catalogs, customer-specific pricing, enrichment, and the workflows that keep them usable.",
+  },
+];
+
+const topicSlugs = new Set(topics.map((t) => t.slug));
+
 export interface Post {
   slug: string;
   title: string;
   excerpt: string;
   date: string;
   type: PostType;
+  tags: string[];
   published: boolean;
   content: string;
   readingTime: string;
@@ -28,6 +77,21 @@ function estimateReadingTime(text: string): string {
   return `${minutes} min read`;
 }
 
+function normalizeTags(raw: unknown, sourcePath: string): string[] {
+  if (!Array.isArray(raw)) return [];
+  const tags = raw.filter((t): t is string => typeof t === "string");
+  for (const tag of tags) {
+    if (!topicSlugs.has(tag)) {
+      throw new Error(
+        `Unknown tag "${tag}" in "${sourcePath}". Valid topics: ${topics
+          .map((t) => t.slug)
+          .join(", ")}.`,
+      );
+    }
+  }
+  return tags;
+}
+
 function getPostsFromDir(dir: string, type: PostType): PostRecord[] {
   const fullPath = path.join(contentDir, dir);
   if (!fs.existsSync(fullPath)) return [];
@@ -39,15 +103,17 @@ function getPostsFromDir(dir: string, type: PostType): PostRecord[] {
       const filePath = path.join(fullPath, filename);
       const fileContents = fs.readFileSync(filePath, "utf-8");
       const { data, content } = matter(fileContents);
+      const sourcePath = path.join(dir, filename);
 
       return {
-        sourcePath: path.join(dir, filename),
+        sourcePath,
         post: {
           slug: filename.replace(/\.mdx$/, ""),
           title: data.title || "Untitled",
           excerpt: data.excerpt || "",
           date: data.date || "",
           type,
+          tags: normalizeTags(data.tags, sourcePath),
           published: data.published !== false,
           content,
           readingTime: estimateReadingTime(content),
@@ -119,4 +185,18 @@ export function getAllPosts(): Post[] {
 
 export function getPostBySlug(slug: string): Post | undefined {
   return getAllPosts().find((post) => post.slug === slug);
+}
+
+export function getTopicBySlug(slug: string): Topic | undefined {
+  return topics.find((t) => t.slug === slug);
+}
+
+export function getPostsByTopic(topicSlug: string): Post[] {
+  return getAllPosts().filter((post) => post.tags.includes(topicSlug));
+}
+
+/** Topics that have at least one published post, in taxonomy order. */
+export function getTopicsInUse(): Topic[] {
+  const used = new Set(getAllPosts().flatMap((post) => post.tags));
+  return topics.filter((t) => used.has(t.slug));
 }
