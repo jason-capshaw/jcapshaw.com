@@ -9,6 +9,7 @@ import {
 } from "@/lib/content";
 import { mdxComponents } from "@/components/mdx";
 import ReadingProgress from "@/components/ReadingProgress";
+import AuthorBio from "@/components/AuthorBio";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
@@ -115,6 +116,8 @@ export default async function ArticlePage({ params }: PageProps) {
             ))}
           </p>
         )}
+
+        <AuthorBio />
 
         {(olderPost || newerPost) && (
           <nav className="post-footer" aria-label="Post navigation">

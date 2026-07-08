@@ -148,6 +148,16 @@ export default function Home() {
             </Link>
           </div>
         </section>
+
+        <section className="practice-line">
+          <p>
+            I also advise distributors and B2B teams on this work:
+            architecture, data, APIs, and applied AI.{" "}
+            <Link className="link" href="/advisory">
+              How I engage →
+            </Link>
+          </p>
+        </section>
       </HomeView>
     </div>
   );
