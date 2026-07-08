@@ -20,8 +20,13 @@ src/
     writing/
       page.tsx            # Writing index — all essays + field notes
       [slug]/page.tsx     # Individual article pages
+      topics/[topic]/     # Static topic pages (taxonomy in lib/content.ts)
+    projects/
+      page.tsx            # Work index — case studies + consulting capabilities
+      [slug]/page.tsx     # Individual case study pages
     about/page.tsx        # Background and contact
-    speaking/page.tsx     # Speaking & advisory offerings
+    advisory/page.tsx     # Engagement page — advisory and embedded architecture work
+    speaking/page.tsx     # Talks and workshops only
     now/page.tsx          # /now page (what I'm working on)
   lib/
     content.ts            # MDX file reading + frontmatter parsing
@@ -43,12 +48,16 @@ Content files use frontmatter like:
 title: "Article Title"
 excerpt: "Short description for listing pages"
 date: "YYYY-MM-DD"
+tags:
+  - commerce-architecture
+  - b2b-distribution
 published: true
 ---
 ```
 
 Notes:
 - Slugs are derived from filenames and must be unique across both `essays/` and `field-notes/`
+- `tags` entries must match the topic taxonomy in `src/lib/content.ts` (commerce-architecture, b2b-distribution, enterprise-systems, applied-ai, apis-integration, product-data); unknown tags fail the build
 - `published: false` excludes a post from both indexes and direct routes
 - MDX content can use the globally registered `Callout`, `Disclosure`, `Switcher`, `Pane`, `PullQuote`, `Diagram`, `PipelineDiagram`, `ShapesMatrix`, and `OwnershipDiagram` components without imports
 - `import` and `export` statements inside article files are not supported
