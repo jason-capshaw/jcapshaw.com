@@ -38,11 +38,11 @@ export default function AboutPage() {
           </p>
           <p>
             Distribution is where I&apos;ve spent most of my career because
-            it has the problems I find worth solving: contract pricing, deep
-            assortments, ERPs older than the internet, and organizations
-            that cannot stop operating just because a transformation program
-            says they should. Hard problems at scale, where getting the
-            foundation right is the whole job.
+            none of it is simple: contract pricing, deep assortments, ERPs
+            older than the internet, and organizations that cannot stop
+            operating just because a transformation program says they
+            should. Hard problems at scale, where getting the foundation
+            right is the whole job.
           </p>
           <p>
             Before any of this, I spent about a decade running a private
