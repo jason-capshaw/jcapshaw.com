@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getPostBySlug, getAllPosts, formatDate, formatDateShort } from "@/lib/content";
+import {
+  getPostBySlug,
+  getAllPosts,
+  getTopicBySlug,
+  formatDate,
+  formatDateShort,
+} from "@/lib/content";
 import { mdxComponents } from "@/components/mdx";
 import ReadingProgress from "@/components/ReadingProgress";
 import { notFound } from "next/navigation";
@@ -51,9 +57,20 @@ export default async function ArticlePage({ params }: PageProps) {
       ? allPosts[currentIndex + 1]
       : null;
 
+  // Prefer posts sharing a topic; fall back to recency.
   const related = allPosts
     .filter((p) => p.slug !== post.slug)
-    .slice(0, 3);
+    .map((p) => ({
+      post: p,
+      shared: p.tags.filter((t) => post.tags.includes(t)).length,
+    }))
+    .sort((a, b) => b.shared - a.shared)
+    .slice(0, 3)
+    .map((r) => r.post);
+
+  const postTopics = post.tags
+    .map((t) => getTopicBySlug(t))
+    .filter((t): t is NonNullable<typeof t> => !!t);
 
   const typeLabel = post.type === "essay" ? "Essay" : "Field Note";
 
@@ -83,6 +100,21 @@ export default async function ArticlePage({ params }: PageProps) {
         <div className="prose">
           <MDXRemote source={post.content} components={mdxComponents} />
         </div>
+
+        {postTopics.length > 0 && (
+          <p className="filed-under">
+            <span className="fu-label">Filed under</span>
+            {postTopics.map((t) => (
+              <Link
+                key={t.slug}
+                href={`/writing/topics/${t.slug}`}
+                className="fu-topic"
+              >
+                {t.label}
+              </Link>
+            ))}
+          </p>
+        )}
 
         {(olderPost || newerPost) && (
           <nav className="post-footer" aria-label="Post navigation">

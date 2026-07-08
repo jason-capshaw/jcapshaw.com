@@ -866,6 +866,39 @@ main { display: block; }
 .mdx-switcher__panel > :first-child { margin-top: 0; }
 .mdx-switcher__panel > :last-child { margin-bottom: 0; }
 
+/* Filed under (topic links after prose) */
+.filed-under {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.filed-under .fu-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-right: 4px;
+}
+.filed-under .fu-topic {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--ink-dim);
+  transition: all 140ms ease;
+}
+.filed-under .fu-topic:hover {
+  border-color: var(--rule-strong);
+  color: var(--ink);
+}
+
 /* Post footer + nav */
 .post-footer {
   padding: 32px 0 0;

@@ -100,34 +100,51 @@ export default function Home() {
             <h3>Topics</h3>
           </div>
           <div className="topic-grid">
-            <Link href="/writing" className="topic">
+            <Link href="/writing/topics/commerce-architecture" className="topic">
               <p className="t-name">Commerce architecture</p>
               <p className="t-desc">
                 Platform decisions, data models, and system design for B2B.
               </p>
               <p className="t-count">Platforms · Data · Search</p>
             </Link>
-            <Link href="/writing" className="topic">
-              <p className="t-name">Distribution &amp; industrial</p>
+            <Link href="/writing/topics/b2b-distribution" className="topic">
+              <p className="t-name">B2B distribution</p>
               <p className="t-desc">
-                How physical products move through complex supply chains.
+                Contract pricing, branch operations, quote workflows, and how
+                physical products actually move.
               </p>
               <p className="t-count">Quote-to-cash · Channels</p>
             </Link>
-            <Link href="/writing" className="topic">
+            <Link href="/writing/topics/applied-ai" className="topic">
               <p className="t-name">Applied AI</p>
               <p className="t-desc">
                 AI in procurement, product data, and operational workflows.
               </p>
               <p className="t-count">Classification · Retrieval</p>
             </Link>
-            <Link href="/writing" className="topic">
+            <Link href="/writing/topics/enterprise-systems" className="topic">
               <p className="t-name">Enterprise systems</p>
               <p className="t-desc">
                 ERPs, integrations, and the build-vs-buy decisions that shape
                 organizations.
               </p>
               <p className="t-count">ERP · Integration · Strategy</p>
+            </Link>
+            <Link href="/writing/topics/apis-integration" className="topic">
+              <p className="t-name">APIs &amp; integration</p>
+              <p className="t-desc">
+                API strategy, governance, and the product thinking behind
+                integration programs.
+              </p>
+              <p className="t-count">Strategy · Governance</p>
+            </Link>
+            <Link href="/writing/topics/product-data" className="topic">
+              <p className="t-name">Product &amp; pricing data</p>
+              <p className="t-desc">
+                Catalogs, customer-specific pricing, enrichment, and the
+                workflows that keep them usable.
+              </p>
+              <p className="t-count">Catalogs · Pricing · Enrichment</p>
             </Link>
           </div>
         </section>
