@@ -132,11 +132,15 @@ export default function AboutPage() {
             .
           </p>
           <p>
-            For speaking and advisory work, the{" "}
-            <Link className="link" href="/speaking">
-              speaking page
+            For advisory and embedded architecture work, the{" "}
+            <Link className="link" href="/advisory">
+              advisory page
             </Link>{" "}
-            is the best summary of fit.
+            is the best summary of fit. For talks and workshops, see{" "}
+            <Link className="link" href="/speaking">
+              speaking
+            </Link>
+            .
           </p>
         </div>
       </section>

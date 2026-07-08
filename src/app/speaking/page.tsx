@@ -1,36 +1,54 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Speaking & Advisory",
+  title: "Speaking",
   description:
-    "Speaking, workshops, and advisory work on B2B commerce, AI, talent, and software.",
+    "Talks and workshops on B2B commerce, distribution modernization, applied AI, and enterprise systems.",
 };
 
 export default function SpeakingPage() {
   return (
     <div className="shell">
       <section className="speaking-page">
-        <span className="eyebrow">Work together</span>
-        <h1>Speaking &amp; Advisory</h1>
+        <span className="eyebrow">Talks &amp; workshops</span>
+        <h1>Speaking</h1>
         <p className="lede">
-          Speaking, workshops, and short advisory engagements on B2B
-          commerce, AI, talent, and software.
+          Practical, engaging sessions on B2B commerce, distribution
+          modernization, applied AI, and enterprise systems. The audience is
+          involved, not spectating.
         </p>
       </section>
 
       <section className="about-section">
-        <h2>Speaking</h2>
+        <h2>Talks</h2>
         <div className="body">
           <p>
-            I run practical, engaging sessions where the audience is involved
-            rather than spectating. Topics span B2B commerce, AI, talent, and
-            software.
+            Conference talks and keynotes grounded in real implementation
+            work, not vendor slides. Recent and recurring themes:
           </p>
-          <p>
-            Half-day and full-day workshops for distributors, focused on
-            strategic planning, product development, gap analysis, and
-            related work.
-          </p>
+          <ul className="section-list">
+            <li>
+              <strong>B2B commerce is not B2C with a login.</strong> Why
+              distribution complexity (contract pricing, punchout, quote
+              workflows) breaks consumer playbooks, and what to build
+              instead.
+            </li>
+            <li>
+              <strong>AI that survives contact with procurement.</strong>{" "}
+              What separates AI demos from AI in production inside real
+              purchasing workflows.
+            </li>
+            <li>
+              <strong>The ERP is not the platform.</strong> Modernizing
+              around a legacy ERP without waiting for the replatform that
+              never comes.
+            </li>
+            <li>
+              <strong>Product data as infrastructure.</strong> Why search,
+              commerce, and AI initiatives all trace back to the catalog.
+            </li>
+          </ul>
           <p>
             I&apos;ve given talks for B2B Online, MDM, PTDA, and others.
             Referrals on request.
@@ -39,12 +57,14 @@ export default function SpeakingPage() {
       </section>
 
       <section className="about-section">
-        <h2>Advisory</h2>
+        <h2>Workshops</h2>
         <div className="body">
           <p>
-            Short, focused advisory work for teams making platform,
-            architecture, data, search, or AI decisions in distribution and
-            industrial commerce.
+            Half-day and full-day working sessions for distributors and B2B
+            teams: strategic planning, product development, gap analysis,
+            architecture reviews, and AI readiness. Built around your
+            business, your systems, and your constraints, not a generic
+            deck.
           </p>
         </div>
       </section>
@@ -53,11 +73,19 @@ export default function SpeakingPage() {
         <h2>Contact</h2>
         <div className="body">
           <p>
-            For a talk, workshop, or advisory engagement, reach out at{" "}
+            For a talk or workshop, reach out at{" "}
             <a className="link" href="mailto:jason@jcapshaw.com">
               jason@jcapshaw.com
             </a>{" "}
             with a few lines on the audience, context, and timing.
+          </p>
+          <p>
+            Looking for ongoing advisory or embedded architecture work
+            instead? That lives on the{" "}
+            <Link className="link" href="/advisory">
+              advisory page
+            </Link>
+            .
           </p>
         </div>
       </section>
