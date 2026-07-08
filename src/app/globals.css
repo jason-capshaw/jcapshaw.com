@@ -7,7 +7,7 @@
   --bg-elev: #111110;
   --ink: #e8e4dc;
   --ink-dim: #a39e93;
-  --ink-faint: #6b6660;
+  --ink-faint: #837d74;
   --rule: #232220;
   --rule-strong: #3a3834;
   --accent: #c8a75e;
@@ -32,7 +32,7 @@
     --bg-elev: #ebe6dc;
     --ink: #1a1918;
     --ink-dim: #5a544c;
-    --ink-faint: #928b80;
+    --ink-faint: #6e6757;
     --rule: #d6cfc2;
     --rule-strong: #b8b0a1;
     --accent: #8a6a1f;
@@ -73,7 +73,7 @@ body {
 
 .eyebrow {
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -878,7 +878,7 @@ main { display: block; }
 }
 .filed-under .fu-label {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -923,7 +923,7 @@ main { display: block; }
 }
 .author-bio .ab-label {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -960,7 +960,7 @@ main { display: block; }
 .post-nav a:hover { background: var(--bg-elev); }
 .post-nav .dir {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -1329,7 +1329,7 @@ html[data-theme="light"] {
   --bg-elev: #ebe6dc;
   --ink: #1a1918;
   --ink-dim: #5a544c;
-  --ink-faint: #928b80;
+  --ink-faint: #6e6757;
   --rule: #d6cfc2;
   --rule-strong: #b8b0a1;
   --accent: #8a6a1f;
@@ -1341,7 +1341,7 @@ html[data-theme="dark"] {
   --bg-elev: #111110;
   --ink: #e8e4dc;
   --ink-dim: #a39e93;
-  --ink-faint: #6b6660;
+  --ink-faint: #837d74;
   --rule: #232220;
   --rule-strong: #3a3834;
   --accent: #c8a75e;
