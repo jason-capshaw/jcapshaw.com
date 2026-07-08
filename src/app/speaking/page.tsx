@@ -25,30 +25,17 @@ export default function SpeakingPage() {
         <div className="body">
           <p>
             Conference talks and keynotes grounded in real implementation
-            work, not vendor slides. Recent and recurring themes:
+            work, not vendor slides. Topics span B2B commerce and
+            distribution modernization, enterprise systems and data, applied
+            AI, and the teams and talent that make any of it work in
+            production.
           </p>
-          <ul className="section-list">
-            <li>
-              <strong>B2B commerce is not B2C with a login.</strong> Why
-              distribution complexity (contract pricing, punchout, quote
-              workflows) breaks consumer playbooks, and what to build
-              instead.
-            </li>
-            <li>
-              <strong>AI that survives contact with procurement.</strong>{" "}
-              What separates AI demos from AI in production inside real
-              purchasing workflows.
-            </li>
-            <li>
-              <strong>The ERP is not the platform.</strong> Modernizing
-              around a legacy ERP without waiting for the replatform that
-              never comes.
-            </li>
-            <li>
-              <strong>Product data as infrastructure.</strong> Why search,
-              commerce, and AI initiatives all trace back to the catalog.
-            </li>
-          </ul>
+          <p>
+            Recent talks have covered why consumer playbooks fail in
+            distribution, what separates AI demos from AI in production, and
+            how to modernize around a legacy ERP instead of waiting for the
+            replatform that never comes.
+          </p>
           <p>
             I&apos;ve given talks for B2B Online, MDM, PTDA, and others.
             Referrals on request.

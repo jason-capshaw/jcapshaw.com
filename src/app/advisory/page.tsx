@@ -36,8 +36,8 @@ export default function AdvisoryPage() {
             <li>
               <strong>Embedded architecture leadership.</strong> Fractional,
               ongoing work as the technical owner for a modernization
-              program: commerce replatforms, ERP integration strategy, API
-              programs, data initiatives.
+              program, whether that centers on commerce, enterprise systems,
+              data, or the operations around them.
             </li>
             <li>
               <strong>Focused advisory.</strong> Short engagements for teams
@@ -58,34 +58,29 @@ export default function AdvisoryPage() {
         <div className="body">
           <ul className="section-list">
             <li>
-              A legacy ERP or commerce platform is constraining every
-              initiative, and replacing it is not a near-term option.
+              The ambition is clear (modernize, automate, make better use of
+              data and AI) but nobody has turned it into a sequence of
+              decisions, designs, and delivery paths teams can act on.
             </li>
             <li>
-              Product, pricing, inventory, and customer data are fragmented
-              across systems, and every downstream project is absorbing the
-              cost.
+              A legacy system is constraining every initiative, and
+              replacing it is not a near-term option.
             </li>
             <li>
-              A digital commerce initiative needs stronger technical
-              ownership: contract pricing, punchout procurement, quote
-              workflows, and customer-specific logic that a stock platform
-              does not handle.
+              Core business data is fragmented across systems, and every
+              downstream project is absorbing the cost.
             </li>
             <li>
-              An API program is connected but not usable: no product
-              thinking, no governance, no owner.
+              A digital initiative needs stronger technical ownership,
+              especially where B2B complexity (contract pricing, procurement
+              integration, quote workflows) breaks the standard playbook.
             </li>
             <li>
-              An AI use case needs grounding in a real business process
-              before it earns production traffic.
+              Critical workflows still live in email, spreadsheets, and
+              tribal knowledge, and nobody owns the fix.
             </li>
             <li>
-              Manual workflows (email, spreadsheets, tribal knowledge) are
-              blocking scale and nobody owns the fix.
-            </li>
-            <li>
-              The initiative spans executives, operators, technologists, and
+              The work spans executives, operators, technologists, and
               vendors, and it needs one person who can hold the thread across
               all of them.
             </li>
