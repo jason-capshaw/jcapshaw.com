@@ -96,19 +96,14 @@ export function getProjectBySlug(slug: string): CaseStudy | undefined {
 }
 
 export const consultingCapabilities: string[] = [
-  "AI strategy",
   "Enterprise architecture",
-  "Digital transformation",
-  "Product management",
-  "Customer experience",
   "Commerce strategy",
+  "Platform modernization",
+  "API strategy",
+  "Systems integration",
   "Enterprise search",
   "Data strategy",
-  "Systems integration",
+  "AI strategy",
+  "Vendor evaluation & RFPs",
   "Technical due diligence",
-  "Vendor evaluation",
-  "Competitive analysis",
-  "Business process optimization",
-  "API strategy",
-  "Platform modernization",
 ];

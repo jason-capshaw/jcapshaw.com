@@ -53,7 +53,10 @@ export default function ProjectsPage() {
           <span className="eyebrow">Consulting practice</span>
           <h2>Advisory and engagement areas</h2>
           <p className="lede">
-            Areas of advisory and engagement-level work outside individual case studies.
+            Areas of advisory and engagement-level work outside individual case studies.{" "}
+            <Link className="link" href="/advisory">
+              How I engage →
+            </Link>
           </p>
         </div>
         <ul className="capability-grid">
