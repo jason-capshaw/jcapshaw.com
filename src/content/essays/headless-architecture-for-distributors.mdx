@@ -1,0 +1,62 @@
+---
+title: "Headless Architecture for Distributors"
+excerpt: "Modernize the customer experience without ripping out the ERP."
+date: "2026-09-17"
+tags:
+  - commerce-architecture
+  - enterprise-systems
+  - b2b-distribution
+published: true
+---
+
+A distributor wants better product search. The project should be about helping customers find what they need. Instead, it gets tied to ERP response times, integration changes, and a release schedule shared with the people running the warehouse.
+
+That is the architectural problem worth solving.
+
+Distribution ERPs carry decades of business knowledge: customer pricing, inventory, purchasing, fulfillment, and accounting. Replacing that depth can be expensive and disruptive. But keeping the ERP should not mean letting it set the pace of every digital improvement.
+
+## The problem is dependency
+
+<PullQuote>Let the ERP run distribution. Build the digital business around it.</PullQuote>
+
+Many distribution platforms grew up around the branch counter, sales desk, and warehouse. Digital capabilities arrived later, often as integrations into the same operational core.
+
+Between 2016 and 2018, at a publicly traded distributor, even the premise that customers would increasingly want to buy online was contentious. Customer expectations moved faster than the underlying systems.
+
+**Which customer interactions actually need the ERP right now?**
+
+## Headless is a starting point
+
+**In headless commerce, the customer-facing frontend is decoupled from the commerce backend and connected through APIs.** That gives teams room to change the experience independently. It does not automatically decouple the business from its ERP. [Shopify's definition](https://help.shopify.com/en/manual/custom-storefronts) makes that frontend/backend distinction explicit.
+
+**For distributors, the larger opportunity is a digital experience decoupled from routine ERP processing.** Digital services handle customer interactions. A digital data layer supplies information prepared for browsing and search. The ERP remains authoritative for the business records and transactions it owns.
+
+Consider a product page. **Descriptions and attributes can come from a product information management (PIM) system.** Search can use its own index. Availability can come from a synchronized view when the business accepts that level of freshness.
+
+<HeadlessDiagram />
+
+## The data layer needs rules
+
+The value goes beyond speed. An ERP organizes data to operate the business. A customer needs it organized to find products, compare options, and place an order. A digital data layer can combine those sources into a useful customer view.
+
+That convenience has a cost: copied data can fall behind its source. [Microsoft's materialized view guidance](https://learn.microsoft.com/en-us/azure/architecture/patterns/materialized-view) identifies freshness and update strategy as design considerations.
+
+Product descriptions might tolerate a delay. Customer-specific prices, credit restrictions, and stock commitments need explicit rules about freshness and revalidation. A cached availability number is not a reservation. An order awaiting ERP acceptance should not appear confirmed.
+
+**Someone must be responsible for resolving synchronization failures, managing retries, and reconciling data.** Customer permissions must also hold across every channel. Moving work outside the ERP moves responsibility with it.
+
+## Fewer changes should reach the core
+
+**The payoff is faster browsing and search, along with a smaller scope of change. Serving those interactions from a digital data layer can substantially improve performance by removing the wait for live ERP responses.** **A search experience decoupled from the ERP can improve using existing product data and customer permissions without changing order processing.** A mobile application can reuse services built for the portal.
+
+Those projects still need testing, monitoring, and release discipline. Changes to pricing rules or fulfillment may still require ERP work. The benefit is that a digital improvement no longer automatically becomes an ERP customization project.
+
+That matters more than predicting the next channel. Whether the next request is an AI assistant, a marketplace connection, or a better reorder screen, reusable services give the team somewhere to start.
+
+## Start with one expensive dependency
+
+Choose a capability where ERP coupling already causes measurable friction. Search is one candidate; product content or browsing may be others. Measure response time, ERP request volume, and the work required to ship a change.
+
+Then establish the boundary: who owns the data, how it updates, which checks remain live, and what customers see when a system is unavailable. Decouple that capability and compare the results.
+
+Expand when the pattern earns its keep. Extra services and data stores create operating costs, so the goal is a useful boundary, not the largest possible stack.

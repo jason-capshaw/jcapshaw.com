@@ -7,6 +7,7 @@ import Diagram from "@/components/mdx/Diagram";
 import PipelineDiagram from "@/components/mdx/PipelineDiagram";
 import ShapesMatrix from "@/components/mdx/ShapesMatrix";
 import OwnershipDiagram from "@/components/mdx/OwnershipDiagram";
+import HeadlessDiagram from "@/components/mdx/HeadlessDiagram";
 import CodeBlock from "@/components/mdx/CodeBlock";
 import { Footnote, Notes, Note } from "@/components/mdx/Footnote";
 
@@ -20,6 +21,7 @@ export const mdxComponents: MDXComponents = {
   PipelineDiagram,
   ShapesMatrix,
   OwnershipDiagram,
+  HeadlessDiagram,
   CodeBlock,
   Footnote,
   Notes,
