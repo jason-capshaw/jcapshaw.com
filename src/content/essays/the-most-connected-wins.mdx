@@ -1,0 +1,92 @@
+---
+title: "The Most Connected Wins"
+excerpt: "Buyers are bringing their own AI. The distributors that win will be the ones a customer's systems can discover, price, and transact with."
+date: "2026-10-19"
+tags:
+  - b2b-distribution
+  - applied-ai
+  - apis-integration
+published: true
+---
+
+Forrester reports that 94 percent of business buyers now use AI somewhere in the buying process. Gartner finds that 70 percent prefer a fully digital, self-service purchase. And in Distribution Strategy Group's latest quarterly survey, 52 percent of distributors say they are losing business to online competitors, the most cited category by a wide margin.
+
+Those are three surveys of three different populations, so they do not add up to one funnel. They do point the same direction. Customers are changing how they buy, and distributors already feel it.
+
+The number I find more interesting is the small one. Octane11 analyzed 25 million B2B website sessions and found that AI assistants still account for less than 2 percent of referral traffic. Buyers are using AI constantly. Almost none of that use shows up as traffic to anyone's website.
+
+Behavior is ahead of infrastructure. That gap is the argument of this essay.
+
+## The customer's AI, not yours
+
+<PullQuote>Being found by customers still matters. Being reachable by their AI is becoming just as important.</PullQuote>
+
+Most of the AI conversation in distribution is about what distributors should build: better search, automated service, a branded assistant. Those are reasonable investments. They also assume the customer will come to you to use them.
+
+Consider an electrical contractor whose assistant already holds the bill of materials, knows the project, and knows which suppliers the firm buys from. That contractor does not want to log into five distributor websites, and does not want five distributor chatbots either. They want their own assistant to identify the right products, check availability across suppliers, pull their negotiated price, and place the order.
+
+Today that assistant mostly does not exist in production form. Gartner's same survey found that 69 percent of buyers still want a sales rep to validate what AI tells them. The agent that transacts autonomously across suppliers is directional, not current. But the pieces are arriving faster than most distribution roadmaps assume, and the distributor that is easiest for that assistant to work with will have an advantage a branded chatbot cannot match.
+
+## What the order data already shows
+
+<EcommerceShareChart />
+
+The shift toward self-service is measurable in distributor order flow. WizCommerce data on more than 250 wholesalers, reported by Distribution Strategy Group, shows ecommerce taking 63.5 percent of digitally captured orders at distributors above $15 million in revenue, against 34 percent at the smallest tier. Roughly 70 percent of surveyed wholesalers say online sales are growing.
+
+The same study found that at three quarters of those wholesalers, the average web order is worth less than half the average order a rep writes. Routine purchases have moved online. Complex orders still run through people, quotes, and multiple systems.
+
+That is where a customer's AI gets useful: assembling a complex order, validating specifications, checking substitutes, and working through purchasing rules that a web cart handles badly. None of it works unless the distributor's capabilities are reachable from outside the distributor's website.
+
+## We have been here before
+
+Distributors have let customers buy through their own systems for decades. EDI, PunchOut, and APIs exist so a customer can retrieve pricing, submit orders, and exchange documents from inside their procurement platform without touching the distributor's storefront.
+
+AI adds another client to that list, not a new category. Model Context Protocol (MCP) gives an AI application a standard way to call business services. It is a tool surface over the same pricing, inventory, and order services, not a replacement for them. A distributor that already exposes a customer-priced availability service can publish it to an assistant in days. One whose pricing lives only in the ERP order entry screen cannot.
+
+<ConnectedCommerceDiagram />
+
+The objective is not an integration per AI platform. It is one set of commerce capabilities reused across whatever client the customer chooses: SAP Ariba, Coupa, a homegrown procurement app, ChatGPT, or an agent the customer built internally. The interface changes. The capabilities do not.
+
+## The hard part is governance, not the protocol
+
+The protocol is the easy part. The questions that will consume architecture time are the ones that follow from letting software act on a customer's behalf.
+
+**Identity.** An agent calling the pricing service needs to act as a specific buyer at a specific customer, with that customer's contract, ship-to locations, and approval limits. Anonymous access to negotiated pricing is not an option. Neither is one shared API key for the whole account.
+
+**Authorization.** A contractor's purchasing agent may be allowed to check stock and build a quote but not release an order above a threshold. Those rules live in the customer's procurement system today. They now need to be enforceable at the distributor's edge as well.
+
+**Audit and liability.** When the agent orders the wrong substitute because an attribute was missing, someone owns that return. The distributor needs a record of what was requested, what data was served, and what was confirmed, in a form both parties can inspect.
+
+**Data exposure.** Publishing negotiated pricing to a third-party AI platform is a contract question before it is a technical one. The answer is usually scoped, authenticated, customer-initiated access, not a public catalog feed.
+
+None of this is new. It is the discipline PunchOut and EDI already demanded, applied to a client that moves faster and asks more questions.
+
+## Product data sets the ceiling
+
+An assistant is only as accurate as the data it is served. If inventory is stale, it recommends stock that is not there. If attributes are incomplete, it proposes an incompatible substitute. If it cannot retrieve the customer's actual price, the transaction stalls. I have written about [the cost of bad product data](/writing/the-real-cost-of-bad-product-data) before. The customer's AI raises that cost, because the mistakes now happen at machine speed, made by a system that cannot ask a counter rep.
+
+## Where to invest
+
+A proprietary assistant may improve the customer experience. If customers increasingly bring their own, it is hard to see how much of that spend creates a lasting advantage.
+
+Secure APIs, reliable inventory and pricing services, clean product data, and the governance to expose them safely: those investments support the website, the sales organization, existing EDI and PunchOut customers, and whichever AI platform wins. They do not depend on guessing the winner.
+
+The questions I would put to a distribution leadership team:
+
+- Can a customer's AI discover and understand our products without a person reading our website?
+- Can an external application retrieve customer-specific pricing and inventory, securely, as that customer?
+- Can a customer transact with us without visiting our site?
+- Are we building reusable capabilities, or another disconnected application?
+- Are we investing as much in connectivity and data quality as in AI itself?
+
+The AI race in distribution will not be won by whoever builds the smartest chatbot. It will be won by the distributors that are easiest to discover, connect to, and transact with.
+
+The most connected wins.
+
+## Sources
+
+1. Forrester, [The State of Business Buying, 2026](https://www.forrester.com/blogs/state-of-business-buying-2026/), January 21, 2026. 94 percent of business buyers report using AI during the buying process.
+2. Gartner, [Survey Finds 69% of B2B Buyers Turn to Sales Reps to Validate AI-Generated Insights](https://www.gartner.com/en/newsroom/press-releases/2026-05-20-gartner-survey-finds-sixty-nine-percent-of-b-two-b-buyers-turn-to-sales-reps-to-validate-ai-generated-insights), May 20, 2026. Survey of 645 B2B buyers: 70 percent prefer a fully digital self-service experience; 69 percent prefer to validate AI insights with a sales rep.
+3. Octane11, [State of B2B AI Search](https://www.octane11.com/insights/insights-state-of-b2b-ai-search/), April 8, 2026. Analysis of 25 million sessions; LLM referrals under 2 percent of total referral traffic.
+4. Distribution Strategy Group, [Distributors See Steady Q4 Demand as Ecommerce Competition Intensifies](https://distributionstrategy.com/2026/10/distributors-see-steady-q4-demand-as-ecommerce-competition-intensifies/), October 1, 2026. 52 percent of respondents losing business to online or ecommerce competitors.
+5. Distribution Strategy Group, [Ecommerce Takes Larger Share of Distributor Orders as Companies Scale](https://distributionstrategy.com/2026/10/ecommerce-takes-larger-share-of-distributor-orders-as-companies-scale/), October 1, 2026. WizCommerce data on more than 250 wholesalers; 70.6 percent report online sales growing.

@@ -8,6 +8,8 @@ import PipelineDiagram from "@/components/mdx/PipelineDiagram";
 import ShapesMatrix from "@/components/mdx/ShapesMatrix";
 import OwnershipDiagram from "@/components/mdx/OwnershipDiagram";
 import HeadlessDiagram from "@/components/mdx/HeadlessDiagram";
+import EcommerceShareChart from "@/components/mdx/EcommerceShareChart";
+import ConnectedCommerceDiagram from "@/components/mdx/ConnectedCommerceDiagram";
 import CodeBlock from "@/components/mdx/CodeBlock";
 import { Footnote, Notes, Note } from "@/components/mdx/Footnote";
 
@@ -22,6 +24,8 @@ export const mdxComponents: MDXComponents = {
   ShapesMatrix,
   OwnershipDiagram,
   HeadlessDiagram,
+  EcommerceShareChart,
+  ConnectedCommerceDiagram,
   CodeBlock,
   Footnote,
   Notes,

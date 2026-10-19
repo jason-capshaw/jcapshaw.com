@@ -59,7 +59,7 @@ Notes:
 - Slugs are derived from filenames and must be unique across both `essays/` and `field-notes/`
 - `tags` entries must match the topic taxonomy in `src/lib/content.ts` (commerce-architecture, b2b-distribution, enterprise-systems, applied-ai, apis-integration, product-data); unknown tags fail the build
 - `published: false` excludes a post from both indexes and direct routes
-- MDX content can use the globally registered `Callout`, `Disclosure`, `Switcher`, `Pane`, `PullQuote`, `Diagram`, `PipelineDiagram`, `ShapesMatrix`, and `OwnershipDiagram` components without imports
+- MDX content can use the globally registered `Callout`, `Disclosure`, `Switcher`, `Pane`, `PullQuote`, `Diagram`, `PipelineDiagram`, `ShapesMatrix`, `OwnershipDiagram`, `HeadlessDiagram`, `EcommerceShareChart`, and `ConnectedCommerceDiagram` components without imports
 - `import` and `export` statements inside article files are not supported
 - Diagrams sit on a graph-paper grid with a mono header (§ title + FIG NN) and optional caption/legend
 
