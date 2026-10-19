@@ -7,7 +7,7 @@ Personal publishing platform for Jason Capshaw — practitioner writing on B2B d
 - **Framework:** Next.js 16 with App Router
 - **Content:** `.mdx` files with gray-matter frontmatter, rendered as real MDX with globally registered article components
 - **Styling:** Vanilla CSS with CSS custom properties (no Tailwind, no CSS modules)
-- **Design:** Dark editorial engineering notebook — serif-forward long-form reading, monospace meta, subtle graph-paper undertones. Spectral (serif) + JetBrains Mono via `next/font/google`. Brass accent (`#c8a75e`), warm-black bg, light mode via `prefers-color-scheme`.
+- **Design:** Dark editorial engineering notebook — serif-forward long-form reading, monospace meta, subtle graph-paper undertones. Spectral (serif) + JetBrains Mono, self-hosted in `src/app/fonts` via `next/font/local`. Brass accent (`#c8a75e`), warm-black bg, light mode via `prefers-color-scheme`.
 - **Deployment:** Static generation (SSG) for all content
 
 ## Project Structure

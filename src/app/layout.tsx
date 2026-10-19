@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Spectral, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
@@ -10,19 +10,34 @@ import TweaksBoot from "@/components/TweaksBoot";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const spectral = Spectral({
+// Fonts are self-hosted from src/app/fonts (see the README there). This
+// avoids the build-time fetch from Google Fonts, which failed intermittently
+// under Turbopack.
+const spectral = localFont({
   variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
   display: "swap",
+  src: [
+    { path: "./fonts/spectral-300.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/spectral-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/spectral-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/spectral-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/spectral-300-italic.woff2", weight: "300", style: "italic" },
+    { path: "./fonts/spectral-400-italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/spectral-500-italic.woff2", weight: "500", style: "italic" },
+    { path: "./fonts/spectral-600-italic.woff2", weight: "600", style: "italic" },
+  ],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const jetbrainsMono = localFont({
   variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
   display: "swap",
+  src: [
+    {
+      path: "./fonts/jetbrains-mono-variable.woff2",
+      weight: "100 800",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
