@@ -80,8 +80,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${spectral.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${spectral.variable} ${jetbrainsMono.variable}`}>
+      <body>
         <TweaksBoot />
         <a href="#main" className="skip-link">Skip to content</a>
         <Header />
