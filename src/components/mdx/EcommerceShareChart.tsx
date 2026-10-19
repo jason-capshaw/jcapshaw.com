@@ -25,7 +25,18 @@ export default function EcommerceShareChart() {
     <Diagram
       title="Ecommerce Share of Digital Orders"
       fig="Fig. 01"
-      caption="Share of digitally captured orders placed through ecommerce, by distributor annual revenue. The remainder are entered by sales representatives. Not a share of all orders or of revenue. Source: WizCommerce data on more than 250 wholesalers, reported by Distribution Strategy Group, October 2026."
+      caption={
+        <>
+          Share of digitally captured orders placed through ecommerce, by
+          distributor annual revenue. The remainder are entered by sales
+          representatives. Not a share of all orders or of revenue. Source:{" "}
+          <a href="https://distributionstrategy.com/2026/10/ecommerce-takes-larger-share-of-distributor-orders-as-companies-scale/">
+            WizCommerce data on more than 250 wholesalers, reported by
+            Distribution Strategy Group, October 2026
+          </a>
+          .
+        </>
+      }
     >
       <svg
         viewBox="0 0 720 220"

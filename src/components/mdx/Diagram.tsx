@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 export interface DiagramProps {
   title: string;
   fig: string;
-  caption?: string;
+  caption?: ReactNode;
   legend?: { label: string; kind?: "" | "solid" | "accent" }[];
   children: ReactNode;
 }
