@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import {
   getPostBySlug,
   getAllPosts,
+  getRoutablePosts,
   getTopicBySlug,
   formatDate,
   formatDateShort,
@@ -19,7 +20,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return getAllPosts().map((post) => ({ slug: post.slug }));
+  return getRoutablePosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -29,6 +30,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    // Unlisted posts are shareable by URL but should not be indexed.
+    robots: post.unlisted ? { index: false, follow: false } : undefined,
     openGraph: {
       type: "article",
       title: post.title,

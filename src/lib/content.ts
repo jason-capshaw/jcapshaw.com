@@ -60,6 +60,8 @@ export interface Post {
   type: PostType;
   tags: string[];
   published: boolean;
+  /** Reachable at its own URL but absent from every listing, feed, sitemap, and search index. */
+  unlisted: boolean;
   content: string;
   readingTime: string;
 }
@@ -115,6 +117,7 @@ function getPostsFromDir(dir: string, type: PostType): PostRecord[] {
           type,
           tags: normalizeTags(data.tags, sourcePath),
           published: data.published !== false,
+          unlisted: data.unlisted === true,
           content,
           readingTime: estimateReadingTime(content),
         },
@@ -178,13 +181,23 @@ export function formatDateShort(dateStr: string): string {
   });
 }
 
+/**
+ * Published, listed posts. This is what every index, feed, sitemap, search
+ * index, and related-post block should read from, so an unlisted post never
+ * appears anywhere on the site except at its own URL.
+ */
 export function getAllPosts(): Post[] {
+  return getRoutablePosts().filter((post) => !post.unlisted);
+}
+
+/** Published posts including unlisted ones. Use only to build direct routes. */
+export function getRoutablePosts(): Post[] {
   const posts = getAllPostRecords().map((record) => record.post);
   return getSortedPosts(posts.filter((post) => post.published));
 }
 
 export function getPostBySlug(slug: string): Post | undefined {
-  return getAllPosts().find((post) => post.slug === slug);
+  return getRoutablePosts().find((post) => post.slug === slug);
 }
 
 export function getTopicBySlug(slug: string): Topic | undefined {
