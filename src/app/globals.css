@@ -1241,6 +1241,9 @@ main { display: block; }
   margin: 0;
 }
 
+/* Diagrams with a stacked phone layout render both SVGs; CSS picks one. */
+.diagram svg.d-narrow { display: none; height: auto; }
+
 .diagram svg .stroke { stroke: var(--rule-strong); fill: none; }
 .diagram svg .stroke-accent { stroke: var(--accent); fill: none; }
 .diagram svg .fill-bg { fill: var(--bg); }
@@ -2368,4 +2371,7 @@ html[data-typo="fraunces"] { --serif: "Fraunces", var(--font-serif), Georgia, se
   .callout { grid-template-columns: 1fr; gap: 8px; }
   .filters .archive-search { width: 100%; margin-left: 0; }
   .tweaks-panel { right: 8px; left: 8px; width: auto; }
+  .diagram-body:has(.d-narrow) { padding: 20px 12px 24px; }
+  .diagram svg.d-wide { display: none; }
+  .diagram svg.d-narrow { display: block; }
 }

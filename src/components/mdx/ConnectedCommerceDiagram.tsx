@@ -20,6 +20,7 @@ export default function ConnectedCommerceDiagram() {
       ]}
     >
       <svg
+        className="d-wide"
         viewBox="0 0 720 380"
         width="100%"
         height="380"
@@ -190,6 +191,163 @@ export default function ConnectedCommerceDiagram() {
         >
           the interface changes · the capabilities do not
         </text>
+      </svg>
+
+      {/* Phone layout: the same four rows, stacked with 2×2 grids. */}
+      <svg className="d-narrow" viewBox="0 0 320 494" width="100%">
+        <defs>
+          <marker
+            id="cc-arrow-n"
+            viewBox="0 0 10 10"
+            refX="9"
+            refY="5"
+            markerWidth="6"
+            markerHeight="6"
+            orient="auto"
+          >
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+          </marker>
+        </defs>
+
+        <g transform="translate(4, 0)">
+          <text className="tiny" x="0" y="12">
+            CUSTOMER-CONTROLLED CLIENTS · N
+          </text>
+          {clients.map((label, i) => (
+            <g
+              key={label}
+              transform={`translate(${(i % 2) * 162}, ${22 + Math.floor(i / 2) * 40})`}
+            >
+              <rect x="0" y="0" width="150" height="30" className="stroke fill-bg" />
+              <text
+                x="75"
+                y="19"
+                textAnchor="middle"
+                className="tiny"
+                style={{ letterSpacing: "0.06em" }}
+              >
+                {label}
+              </text>
+            </g>
+          ))}
+
+          <g style={{ color: "var(--rule-strong)" }}>
+            <line
+              x1={156}
+              y1={92}
+              x2={156}
+              y2={114}
+              className="stroke"
+              markerEnd="url(#cc-arrow-n)"
+            />
+          </g>
+          <text className="tiny" x="166" y="107" style={{ letterSpacing: "0.04em" }}>
+            authenticated requests
+          </text>
+
+          <g transform="translate(0, 118)">
+            <rect
+              x="0"
+              y="0"
+              width="312"
+              height="88"
+              className="stroke-accent fill-elev"
+              strokeWidth="1.25"
+            />
+            <text x="12" y="19" className="label-accent">
+              CONNECTED COMMERCE LAYER · 01
+            </text>
+            <text x="12" y="38" className="serif">
+              APIs · MCP · PunchOut · EDI
+            </text>
+            <line
+              x1="0"
+              y1="48"
+              x2="312"
+              y2="48"
+              className="stroke-accent"
+              strokeDasharray="2 3"
+            />
+            <text x="12" y="64" className="label-accent">
+              identity · authorization
+            </text>
+            <text x="12" y="78" className="label-accent">
+              audit · data scope
+            </text>
+          </g>
+
+          <g style={{ color: "var(--rule-strong)" }}>
+            <line
+              x1={156}
+              y1={206}
+              x2={156}
+              y2={228}
+              className="stroke"
+              markerEnd="url(#cc-arrow-n)"
+            />
+          </g>
+
+          <g transform="translate(0, 232)">
+            <rect
+              x="0"
+              y="0"
+              width="312"
+              height="96"
+              className="stroke fill-elev"
+              strokeWidth="1.5"
+            />
+            <text x="12" y="19" className="tiny">
+              REUSABLE COMMERCE CAPABILITIES · 02
+            </text>
+            {capabilities.map((label, i) => (
+              <g
+                key={label}
+                transform={`translate(${12 + (i % 2) * 150}, ${30 + Math.floor(i / 2) * 32})`}
+              >
+                <rect x="0" y="0" width="138" height="24" className="tag-rect" />
+                <text
+                  x="69"
+                  y="16"
+                  textAnchor="middle"
+                  className="tiny"
+                  style={{ letterSpacing: "0.06em" }}
+                >
+                  {label}
+                </text>
+              </g>
+            ))}
+          </g>
+
+          <g style={{ color: "var(--rule-strong)" }}>
+            <line
+              x1={156}
+              y1={328}
+              x2={156}
+              y2={350}
+              className="stroke"
+              markerEnd="url(#cc-arrow-n)"
+            />
+          </g>
+
+          <g transform="translate(0, 354)">
+            <rect x="0" y="0" width="312" height="48" className="stroke fill-bg" />
+            <text x="12" y="19" className="tiny">ERP · 03</text>
+            <text x="12" y="38" className="serif">
+              contracts · pricing · stock · orders
+            </text>
+          </g>
+          <g transform="translate(0, 412)">
+            <rect x="0" y="0" width="312" height="48" className="stroke fill-bg" />
+            <text x="12" y="19" className="tiny">PIM + SEARCH INDEX · 04</text>
+            <text x="12" y="38" className="serif">
+              attributes · substitutes · compatibility
+            </text>
+          </g>
+
+          <text className="tiny" x="0" y="484" style={{ letterSpacing: "0.04em" }}>
+            the interface changes · the capabilities do not
+          </text>
+        </g>
       </svg>
     </Diagram>
   );
