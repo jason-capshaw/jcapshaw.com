@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pacman -Q*)",
+      "Bash(claude-rc list*)",
+      "Bash(journalctl --user -u *)",
+      "Bash(journalctl -u *)",
+      "Bash(systemctl status *)",
+      "Bash(systemctl --user status*)",
+      "Bash(systemctl is-active *)",
+      "Bash(systemctl is-enabled *)",
+      "Bash(pacman -Ss *)",
+      "Bash(pacman -Si *)"
+    ]
+  }
+}

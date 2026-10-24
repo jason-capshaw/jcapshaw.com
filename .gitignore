@@ -43,3 +43,6 @@ next-env.d.ts
 
 # local content review scratch files
 portfolio-content-review.txt
+
+# Claude Code personal settings
+.claude/settings.local.json
