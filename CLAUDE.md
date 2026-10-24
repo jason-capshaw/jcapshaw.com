@@ -60,7 +60,7 @@ Notes:
 - `tags` entries must match the topic taxonomy in `src/lib/content.ts` (commerce-architecture, b2b-distribution, enterprise-systems, applied-ai, apis-integration, product-data); unknown tags fail the build
 - `published: false` excludes a post from both indexes and direct routes
 - `unlisted: true` keeps the direct route (shareable by URL, `noindex`) but removes the post from the homepage, writing index, topic pages, feeds, sitemap, search index, and related-post links
-- MDX content can use the globally registered `Callout`, `Disclosure`, `Switcher`, `Pane`, `PullQuote`, `Diagram`, `PipelineDiagram`, `ShapesMatrix`, `OwnershipDiagram`, `HeadlessDiagram`, `EcommerceShareChart`, and `ConnectedCommerceDiagram` components without imports
+- MDX content can use the globally registered `Callout`, `Disclosure`, `Switcher`, `Pane`, `PullQuote`, `Diagram`, `PipelineDiagram`, `ShapesMatrix`, `OwnershipDiagram`, `HeadlessDiagram`, `EcommerceShareChart`, `ConnectedCommerceDiagram`, `AgentGovernanceDiagram`, and `BuildOutLadderDiagram` components without imports
 - `import` and `export` statements inside article files are not supported
 - Diagrams sit on a graph-paper grid with a mono header (§ title + FIG NN) and optional caption/legend
 
